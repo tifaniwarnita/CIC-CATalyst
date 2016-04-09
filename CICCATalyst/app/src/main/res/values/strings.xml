@@ -9,4 +9,11 @@
     <string name="token">Token</string>
     <string name="login">LOGIN</string>
     <string name="lewati">Lewati</string>
+    <string name="sudahkah">Sudahkah kamu ke Cats and Ice Cream hari ini?</string>
+    <string name="home">Home</string>
+    <string name="event">Event</string>
+    <string name="our_cats">Our Cats</string>
+    <string name="our_menu">Our Menu</string>
+    <string name="reservation">Reservation</string>
+    <string name="contacts">Contacts</string>
 </resources>

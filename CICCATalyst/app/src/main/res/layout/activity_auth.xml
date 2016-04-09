@@ -15,7 +15,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:paddingTop="80dp"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
@@ -35,7 +35,7 @@
             android:id="@+id/edit_text_token"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="textCapCharacters"
             android:textAlignment="center"
             android:hint="@string/token"/>
 
@@ -51,7 +51,7 @@
         android:text="@string/login"/>
 
     <TextView
-        android:id="@+id/link_lewati"
+        android:id="@+id/text_view_lewati"
         android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

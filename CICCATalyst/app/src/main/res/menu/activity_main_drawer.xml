@@ -2,23 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Import" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tools" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon_home"
+            android:title="@string/home"
+            android:checked="true"/>
+        <item
+            android:id="@+id/nav_event"
+            android:icon="@drawable/icon_event"
+            android:title="@string/event" />
+        <item
+            android:id="@+id/nav_our_cats"
+            android:icon="@drawable/icon_our_cats"
+            android:title="@string/our_cats" />
+        <item
+            android:id="@+id/nav_our_menu"
+            android:icon="@drawable/icon_our_menu"
+            android:title="@string/our_menu" />
+        <item
+            android:id="@+id/nav_reservation"
+            android:icon="@drawable/icon_reservation"
+            android:title="@string/reservation" />
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/icon_contacts"
+            android:title="@string/contacts" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
-                android:title="Share" />
-            <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
 
 </menu>
