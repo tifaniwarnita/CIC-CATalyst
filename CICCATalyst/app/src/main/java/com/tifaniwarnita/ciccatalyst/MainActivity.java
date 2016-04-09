@@ -1,5 +1,6 @@
 package com.tifaniwarnita.ciccatalyst;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // TODO: Tulisan Hi! di nav drawer diganti sama Hi, <<NAMA>>! kalau udah login
+        // TODO: Hilangin menu Login di nav drawer kalo pengguna udah login
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
@@ -79,9 +83,24 @@ public class MainActivity extends AppCompatActivity
 
         // TODO: change page
         if (id == R.id.nav_home) {
-
+            // Clear back stack
+            FragmentManager fm = getSupportFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, new HomeFragment())
+                    .commit();
+        } else if (id == R.id.nav_login) {
+            Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            startActivity(intent);
         } else if (id == R.id.nav_event) {
-
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, new EventFragment())
+                    .addToBackStack(null)
+                    .commit();
         } else if (id == R.id.nav_our_cats) {
 
         } else if (id == R.id.nav_our_menu) {

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
+
 public class AuthActivity extends AppCompatActivity {
 
     @Override
@@ -23,7 +25,8 @@ public class AuthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String token = editTextToken.getText().toString();
-                // TODO: Cek kesamaan dengan basis data
+                // TODO: Cek kesamaan dengan basis data, kalau sama ambil namanya, simpen di SharedPreferences
+                // PreferencesController.setUser(getApplicationContext(), id, name);
             }
         });
 
