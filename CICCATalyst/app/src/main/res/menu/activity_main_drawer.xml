@@ -8,6 +8,10 @@
             android:title="@string/home"
             android:checked="true"/>
         <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/icon_event"
+            android:title="@string/login" />
+        <item
             android:id="@+id/nav_event"
             android:icon="@drawable/icon_event"
             android:title="@string/event" />
