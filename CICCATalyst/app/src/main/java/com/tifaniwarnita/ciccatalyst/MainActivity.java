@@ -16,8 +16,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        ReservationFragment.ReservationFragmentListener,
+        ReservationDetailFragment.ReservationDetailFragmentListener {
 
     private NavigationView navigationView;
     static final int REQUEST_TOKEN = 1;
@@ -177,5 +181,16 @@ public class MainActivity extends AppCompatActivity
                 // Do something with the contact here (bigger example below)
             }
         }
+    }
+
+    @Override
+    public void onSelectDate(Date date) {
+        FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, ReservationDetailFragment.newInstance(
+                            ReservationDetailFragment.convertDateToString(date)
+                    ))
+                    .addToBackStack(getResources().getString(R.string.reservation_detail))
+                    .commit();
     }
 }
