@@ -148,7 +148,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_reservation) {
 
         } else if (id == R.id.nav_contacts) {
-
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, new ContactsFragment())
+                    .addToBackStack(getResources().getString(R.string.contacts))
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
