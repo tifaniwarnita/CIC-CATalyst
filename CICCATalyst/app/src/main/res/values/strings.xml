@@ -17,7 +17,7 @@
     <string name="reservation">Reservation</string>
     <string name="contacts">Contacts</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cats_and_ice_cream">Cats and Ice Cream</string>
     <string name="cic_home_description">It means heaven on earth. For reservation chat via line @catsandicecream  or register as a member to reserver from this application. Open everyday except monday 11.00-22.00</string>

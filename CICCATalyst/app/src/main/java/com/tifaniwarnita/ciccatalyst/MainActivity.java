@@ -134,7 +134,11 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(getResources().getString(R.string.event))
                     .commit();
         } else if (id == R.id.nav_our_cats) {
-
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, new OurCatsFragment())
+                    .addToBackStack(getResources().getString(R.string.our_cats))
+                    .commit();
         } else if (id == R.id.nav_our_menu) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
