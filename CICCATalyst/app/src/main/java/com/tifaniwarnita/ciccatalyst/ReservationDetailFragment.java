@@ -53,8 +53,7 @@ public class ReservationDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_reservation_detail, container, false);
-        TextView test = (TextView) v.findViewById(R.id.test_text_view);
-        test.setText(date.toString());
+
 
         return v;
     }

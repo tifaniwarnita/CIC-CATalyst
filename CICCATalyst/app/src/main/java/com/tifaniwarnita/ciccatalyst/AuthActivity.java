@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
@@ -25,8 +26,25 @@ public class AuthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String token = editTextToken.getText().toString();
-                // TODO: Cek kesamaan dengan basis data, kalau sama ambil namanya, simpen di SharedPreferences
-                // PreferencesController.setUser(getApplicationContext(), id, name);
+                // TODO: STUB authToken(String token) return null atau ArrayList<String>: idx 1 id, idx 2 nama
+                // Cek kesamaan dengan basis data, kalau sama ambil namanya, simpen di SharedPreferences
+                /*
+                ArrayList<String> auth = authToken(editTextToken);
+                if (auth != null) {
+                    /* ArrayList<String> auth = new ArrayList<>();
+                    auth.add("13513055");
+                    auth.add("Tifani Warnita");
+                     * /
+                    PreferencesController.setUser(getApplicationContext(), auth.get(0), auth.get(1));
+                    Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Token salah",
+                            Toast.LENGTH_SHORT).show();
+                }
+                */
             }
         });
 
