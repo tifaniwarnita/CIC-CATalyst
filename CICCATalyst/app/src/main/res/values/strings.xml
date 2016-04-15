@@ -10,17 +10,17 @@
     <string name="login">Login</string>
     <string name="lewati">Lewati</string>
     <string name="sudahkah">Sudahkah kamu ke Cats and Ice Cream hari ini?</string>
-    <string name="home">Home</string>
-    <string name="event">Event</string>
-    <string name="our_cats">Our Cats</string>
-    <string name="our_menu">Our Menu</string>
-    <string name="reservation">Reservation</string>
-    <string name="contacts">Contacts</string>
+    <string name="home">Beranda</string>
+    <string name="event">Promosi</string>
+    <string name="our_cats">Daftar Kucing</string>
+    <string name="our_menu">Daftar Menu</string>
+    <string name="reservation">Reservasi</string>
+    <string name="contacts">Kontak</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cats_and_ice_cream">Cats and Ice Cream</string>
-    <string name="cic_home_description">It means heaven on earth. For reservation chat via line @catsandicecream  or register as a member to reserver from this application. Open everyday except monday 11.00-22.00</string>
+    <string name="cic_home_description">Ini adalah surga bagi para pecinta kucing di dunia. Untuk reservasi dapat melaui LINE ke @catsandicecream atau daftar sebagai member ke untuk dapat melakukan reservasi melalui aplikasi ini. Buka setiap hari kecuali Senin, 11.00 - 22.00.</string>
     <string name="home_bullet_1">Nikmati sensasi bermain bersama kucing</string>
     <string name="home_bullet_2">Kucing dengan beragam ras</string>
     <string name="home_bullet_3">Interior berasa dalam hutan</string>
@@ -28,5 +28,7 @@
     <string name="home_bullet_5">Es krim berbagai rasa bisa dinikmati</string>
     <string name="pinch">Pinch to zoom</string>
     <string name="reservasi">Reservasi</string>
-    <string name="reservation_detail">Reservation Detail</string>
+    <string name="reservation_detail">Detail Reservasi</string>
+    <string name="jam">Jam</string>
+    <string name="status">Status</string>
 </resources>

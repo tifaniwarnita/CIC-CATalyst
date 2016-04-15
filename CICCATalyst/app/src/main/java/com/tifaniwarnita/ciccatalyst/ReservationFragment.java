@@ -9,9 +9,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
+import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -52,6 +57,18 @@ public class ReservationFragment extends Fragment {
         fm.beginTransaction()
                 .replace(R.id.calendar_fragment_container, caldroidFragment)
                 .commit();
+
+        Button buttonReservasi = (Button) v.findViewById(R.id.button_reservation);
+        TextView textViewInfo = (TextView) v.findViewById(R.id.text_view_reservasi_pesan_login);
+
+        if (PreferencesController.isLoggedIn(getContext())) {
+            buttonReservasi.setVisibility(View.VISIBLE);
+            textViewInfo.setVisibility(View.INVISIBLE);
+        } else {
+            buttonReservasi.setVisibility(View.INVISIBLE);
+            textViewInfo.setVisibility(View.VISIBLE);
+        }
+
 
         return v;
     }

@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,6 +57,22 @@ public class ReservationDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_reservation_detail, container, false);
 
+        TextView textViewTanggal = (TextView) v.findViewById(R.id.text_view_tanggal);
+        Button buttonReservasi = (Button) v.findViewById(R.id.button_reservation);
+        TextView textViewInfo = (TextView) v.findViewById(R.id.text_view_reservasi_pesan_login);
+
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MM yyyy");
+            textViewTanggal.setText(dateFormat.format(date));
+        }
+
+        if (PreferencesController.isLoggedIn(getContext())) {
+            buttonReservasi.setVisibility(View.VISIBLE);
+            textViewInfo.setVisibility(View.INVISIBLE);
+        } else {
+            buttonReservasi.setVisibility(View.INVISIBLE);
+            textViewInfo.setVisibility(View.VISIBLE);
+        }
 
         return v;
     }

@@ -26,5 +26,4 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.roomorama:caldroid:3.0.1'
-    compile 'de.codecrafters.tableview:tableview:1.1.0'
 }

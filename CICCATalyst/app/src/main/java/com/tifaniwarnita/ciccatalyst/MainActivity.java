@@ -15,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
 import java.util.Date;
 
@@ -44,6 +47,14 @@ public class MainActivity extends AppCompatActivity
 
         // TODO: Tulisan Hi! di nav drawer diganti sama Hi, <<NAMA>>! kalau udah login
         // TODO: Hilangin menu Login di nav drawer kalo pengguna udah login
+        if (PreferencesController.getName(getApplicationContext()) != null) {
+            navigationView.getMenu().getItem(1).setVisible(false).setEnabled(false);
+            View headerView = navigationView.getHeaderView(0);
+            TextView hiTextView = (TextView) headerView.findViewById(R.id.text_view_hi);
+            String fullName = PreferencesController.getName(getApplicationContext());
+            String[] name = fullName.split("\\s+");
+            hiTextView.setText("Hi, " + name[0] + "!");
+        }
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()

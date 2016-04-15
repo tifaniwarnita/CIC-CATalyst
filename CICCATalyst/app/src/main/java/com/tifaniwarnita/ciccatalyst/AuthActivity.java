@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
+import java.util.ArrayList;
+
 public class AuthActivity extends AppCompatActivity {
 
     @Override
@@ -45,6 +47,20 @@ public class AuthActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 */
+
+                if (editTextToken.getText().toString().equals("KUCING")) {
+                    ArrayList<String> auth = new ArrayList<>();
+                    auth.add("13513055");
+                    auth.add("Tifani Warnita");
+                    PreferencesController.setUser(getApplicationContext(), auth.get(0), auth.get(1));
+                    Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Token salah",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -30,4 +30,12 @@ public class PreferencesController {
         return name;
     }
 
+    public static boolean isLoggedIn(Context context) {
+        if (getName(context) != null && getId(context) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
