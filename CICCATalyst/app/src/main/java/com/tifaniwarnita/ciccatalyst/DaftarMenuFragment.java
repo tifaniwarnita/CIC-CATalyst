@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class OurMenuFragment extends Fragment {
+public class DaftarMenuFragment extends Fragment {
 
 
-    public OurMenuFragment() {
+    public DaftarMenuFragment() {
         // Required empty public constructor
     }
 
@@ -20,7 +20,7 @@ public class OurMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_our_menu, container, false);
+        View v = inflater.inflate(R.layout.fragment_daftar_menu, container, false);
         return v;
     }
 

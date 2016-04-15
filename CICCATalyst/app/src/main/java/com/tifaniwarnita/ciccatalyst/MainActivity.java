@@ -2,8 +2,6 @@ package com.tifaniwarnita.ciccatalyst;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +21,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ReservationFragment.ReservationFragmentListener,
-        ReservationDetailFragment.ReservationDetailFragmentListener {
+        ReservasiFragment.ReservationFragmentListener,
+        DetailReservasiFragment.ReservationDetailFragmentListener {
 
     private NavigationView navigationView;
     static final int REQUEST_TOKEN = 1;
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
-                .replace(R.id.fragment_container, new HomeFragment())
+                .replace(R.id.fragment_container, new BerandaFragment())
                 .commit();
     }
 
@@ -136,40 +134,40 @@ public class MainActivity extends AppCompatActivity
                 fm.popBackStack();
             }
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new HomeFragment())
+                    .replace(R.id.fragment_container, new BerandaFragment())
                     .commit();
         } else if (id == R.id.nav_login) {
-            Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+            Intent intent = new Intent(MainActivity.this, AutentikasiActivity.class);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             startActivityForResult(intent, REQUEST_TOKEN);
         } else if (id == R.id.nav_event) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new EventFragment())
+                    .replace(R.id.fragment_container, new PromosiFragment())
                     .addToBackStack(getResources().getString(R.string.event))
                     .commit();
         } else if (id == R.id.nav_our_cats) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new OurCatsFragment())
+                    .replace(R.id.fragment_container, new DaftarKucingFragment())
                     .addToBackStack(getResources().getString(R.string.our_cats))
                     .commit();
         } else if (id == R.id.nav_our_menu) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new OurMenuFragment())
+                    .replace(R.id.fragment_container, new DaftarMenuFragment())
                     .addToBackStack(getResources().getString(R.string.our_menu))
                     .commit();
         } else if (id == R.id.nav_reservation) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new ReservationFragment())
+                    .replace(R.id.fragment_container, new ReservasiFragment())
                     .addToBackStack(getResources().getString(R.string.reservation))
                     .commit();
         } else if (id == R.id.nav_contacts) {
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, new ContactsFragment())
+                    .replace(R.id.fragment_container, new KontakFragment())
                     .addToBackStack(getResources().getString(R.string.contacts))
                     .commit();
         }
@@ -198,8 +196,8 @@ public class MainActivity extends AppCompatActivity
     public void onSelectDate(Date date) {
         FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, ReservationDetailFragment.newInstance(
-                            ReservationDetailFragment.convertDateToString(date)
+                    .replace(R.id.fragment_container, DetailReservasiFragment.newInstance(
+                            DetailReservasiFragment.convertDateToString(date)
                     ))
                     .addToBackStack(getResources().getString(R.string.reservation_detail))
                     .commit();

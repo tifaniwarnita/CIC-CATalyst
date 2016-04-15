@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.tifaniwarnita.ciccatalyst.EventFragment">
+    tools:context=".PromosiFragment">
 
     <ImageView
         android:id="@+id/cic_logo"

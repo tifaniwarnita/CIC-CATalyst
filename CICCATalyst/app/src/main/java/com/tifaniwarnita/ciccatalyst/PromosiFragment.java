@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class HomeFragment extends Fragment {
+public class PromosiFragment extends Fragment {
 
 
-    public HomeFragment() {
+    public PromosiFragment() {
         // Required empty public constructor
     }
 
@@ -20,7 +20,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_home, container, false);
+        View v =  inflater.inflate(R.layout.fragment_promosi, container, false);
+
+        //TODO: Ambil dari database daftar event yang ada
         return v;
     }
 

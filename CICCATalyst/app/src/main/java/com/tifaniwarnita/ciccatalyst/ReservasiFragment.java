@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,6 @@ import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,7 +22,7 @@ import java.util.Date;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReservationFragment extends Fragment {
+public class ReservasiFragment extends Fragment {
 
     private ReservationFragmentListener fragmentListener;
 
@@ -33,7 +30,7 @@ public class ReservationFragment extends Fragment {
         void onSelectDate(Date date);
     }
 
-    public ReservationFragment() {
+    public ReservasiFragment() {
         // Required empty public constructor
     }
 
@@ -42,7 +39,7 @@ public class ReservationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_reservation, container, false);
+        View v =  inflater.inflate(R.layout.fragment_reservasi, container, false);
 
         CaldroidFragment caldroidFragment = new CaldroidFragment();
         Bundle args = new Bundle();
