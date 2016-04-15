@@ -1,20 +1,22 @@
 package com.tifaniwarnita.ciccatalyst;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.tifaniwarnita.ciccatalyst.controllers.PreferencesController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class ReservationDetailFragment extends Fragment {
+public class DetailReservasiFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DATE = "date";
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm";
@@ -27,12 +29,12 @@ public class ReservationDetailFragment extends Fragment {
 
     }
 
-    public ReservationDetailFragment() {
+    public DetailReservasiFragment() {
 
     }
 
-    public static ReservationDetailFragment newInstance(String date) {
-        ReservationDetailFragment fragment = new ReservationDetailFragment();
+    public static DetailReservasiFragment newInstance(String date) {
+        DetailReservasiFragment fragment = new DetailReservasiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_DATE, date);
         fragment.setArguments(args);
@@ -52,8 +54,24 @@ public class ReservationDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_reservation_detail, container, false);
+        View v =  inflater.inflate(R.layout.fragment_detail_reservasi, container, false);
 
+        TextView textViewTanggal = (TextView) v.findViewById(R.id.text_view_tanggal);
+        Button buttonReservasi = (Button) v.findViewById(R.id.button_reservation);
+        TextView textViewInfo = (TextView) v.findViewById(R.id.text_view_reservasi_pesan_login);
+
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MM yyyy");
+            textViewTanggal.setText(dateFormat.format(date));
+        }
+
+        if (PreferencesController.isLoggedIn(getContext())) {
+            buttonReservasi.setVisibility(View.VISIBLE);
+            textViewInfo.setVisibility(View.INVISIBLE);
+        } else {
+            buttonReservasi.setVisibility(View.INVISIBLE);
+            textViewInfo.setVisibility(View.VISIBLE);
+        }
 
         return v;
     }
@@ -78,7 +96,7 @@ public class ReservationDetailFragment extends Fragment {
     public static Date convertStringToDate(String dateString) {
         Date convertDate = null;
         SimpleDateFormat format = new SimpleDateFormat
-                (ReservationDetailFragment.DEFAULT_DATE_FORMAT);
+                (DetailReservasiFragment.DEFAULT_DATE_FORMAT);
         try {
             convertDate = format.parse(dateString);
         } catch (ParseException e) {
@@ -90,7 +108,7 @@ public class ReservationDetailFragment extends Fragment {
     public static String convertDateToString(Date date) {
         String dateString = null;
         SimpleDateFormat dateFormat = new SimpleDateFormat
-                (ReservationDetailFragment.DEFAULT_DATE_FORMAT);
+                (DetailReservasiFragment.DEFAULT_DATE_FORMAT);
         dateString = dateFormat.format(date);
         return dateString;
     }

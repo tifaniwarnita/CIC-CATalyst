@@ -1,0 +1,265 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".DetailReservasiFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/cic_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/cic_icon_launcher"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@string/reservation_detail"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_view_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Jumat, 15 April 2016"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="3">
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/jam"
+                android:textSize="15sp"
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/status"
+                android:textSize="15sp"
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="11.00 - 12.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="12.00 - 13.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="13.00 - 14.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="14.00 - 15.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Sudah dipesan"
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="15.00 - 16.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="16.00 - 17.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_6"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="17.00 - 18.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_7"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="18.00 - 19.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_8"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="19.00 - 20.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_9"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="20.00 - 21.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_10"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Sudah dipesan"
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="21.00 - 22.00"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+            <TextView
+                android:id="@+id/jam_11"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=""
+                android:padding="3dip"
+                android:textColor="@android:color/holo_red_dark"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button_reservation"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/black"
+        android:text="@string/reservasi"/>
+
+    <TextView
+        android:id="@+id/text_view_reservasi_pesan_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Reservasi melalui aplikasi ini hanya bisa dilakukan oleh member\nSilakan login terlebih dahulu"
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"/>
+
+</LinearLayout>

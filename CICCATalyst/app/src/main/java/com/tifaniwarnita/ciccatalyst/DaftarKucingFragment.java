@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class EventFragment extends Fragment {
+public class DaftarKucingFragment extends Fragment {
 
 
-    public EventFragment() {
+    public DaftarKucingFragment() {
         // Required empty public constructor
     }
 
@@ -20,11 +20,7 @@ public class EventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_event, container, false);
-
-        //TODO: Ambil dari database daftar event yang ada
-        return v;
+        return inflater.inflate(R.layout.fragment_daftar_kucing, container, false);
     }
-
 
 }
