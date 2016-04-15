@@ -16,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.backendless.Backendless;
+
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
@@ -38,6 +40,10 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        String application_id = getResources().getString(R.string.application_id);
+        String secret_key = getResources().getString(R.string.secret_key);
+        Backendless.initApp(this, application_id, secret_key, "v1");
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
