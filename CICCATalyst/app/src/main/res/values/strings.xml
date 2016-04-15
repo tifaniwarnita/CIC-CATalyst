@@ -31,4 +31,37 @@
     <string name="reservation_detail">Detail Reservasi</string>
     <string name="jam">Jam</string>
     <string name="status">Status</string>
+    <string name="reservasi_tempat">Reservasi Tempat</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="waktu_mulai">Waktu Mulai</string>
+    <string name="waktu_selesai">Waktu Selesai</string>
+
+    <string-array name="jam_reservasi">
+        <item>11.00 - 12.00</item>
+        <item>12.00 - 13.00</item>
+        <item>13.00 - 14.00</item>
+        <item>14.00 - 15.00</item>
+        <item>15.00 - 16.00</item>
+        <item>16.00 - 17.00</item>
+        <item>17.00 - 18.00</item>
+        <item>18.00 - 19.00</item>
+        <item>19.00 - 20.00</item>
+        <item>20.00 - 21.00</item>
+        <item>21.00 - 22.00</item>
+    </string-array>
+
+    <string-array name="jam_mulai_selesai_reservasi">
+        <item>11.00</item>
+        <item>12.00</item>
+        <item>13.00</item>
+        <item>14.00</item>
+        <item>15.00</item>
+        <item>16.00</item>
+        <item>17.00</item>
+        <item>18.00</item>
+        <item>19.00</item>
+        <item>20.00</item>
+        <item>21.00</item>
+        <item>22.00</item>
+    </string-array>
 </resources>

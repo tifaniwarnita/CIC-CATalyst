@@ -22,7 +22,8 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ReservasiFragment.ReservationFragmentListener,
-        DetailReservasiFragment.ReservationDetailFragmentListener {
+        DetailReservasiFragment.ReservationDetailFragmentListener,
+        TambahReservasiDialogFragment.TambahReservasiDialogFragmentListener{
 
     private NavigationView navigationView;
     static final int REQUEST_TOKEN = 1;
@@ -130,9 +131,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Clear back stack
             FragmentManager fm = getSupportFragmentManager();
-            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            /* for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                 fm.popBackStack();
-            }
+            } */
             fm.beginTransaction()
                     .replace(R.id.fragment_container, new BerandaFragment())
                     .commit();
@@ -201,5 +202,13 @@ public class MainActivity extends AppCompatActivity
                     ))
                     .addToBackStack(getResources().getString(R.string.reservation_detail))
                     .commit();
+    }
+
+    @Override
+    public void onReservasiButtonClick(Date date) {
+        TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
+                DetailReservasiFragment.convertDateToString(date)
+        );
+        tambahReservasiDialog.show(getSupportFragmentManager(), null);
     }
 }

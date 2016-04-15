@@ -26,7 +26,7 @@ public class DetailReservasiFragment extends Fragment {
     private ReservationDetailFragmentListener fragmentListener;
 
     public interface ReservationDetailFragmentListener {
-
+        void onReservasiButtonClick(Date date);
     }
 
     public DetailReservasiFragment() {
@@ -68,6 +68,12 @@ public class DetailReservasiFragment extends Fragment {
         if (PreferencesController.isLoggedIn(getContext())) {
             buttonReservasi.setVisibility(View.VISIBLE);
             textViewInfo.setVisibility(View.INVISIBLE);
+            buttonReservasi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragmentListener.onReservasiButtonClick(date);
+                }
+            });
         } else {
             buttonReservasi.setVisibility(View.INVISIBLE);
             textViewInfo.setVisibility(View.VISIBLE);
