@@ -7,4 +7,7 @@
     <string name="kasir">Kasir</string>
     <string name="pelayan">Pelayan</string>
     <string name="admin">Admin</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>
