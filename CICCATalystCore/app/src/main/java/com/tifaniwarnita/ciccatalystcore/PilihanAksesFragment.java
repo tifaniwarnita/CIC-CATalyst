@@ -35,7 +35,7 @@ public class PilihanAksesFragment extends Fragment {
         buttonKasir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), KasirActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 getActivity().startActivity(intent);
