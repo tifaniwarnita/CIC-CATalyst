@@ -1,0 +1,77 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.tifaniwarnita.ciccatalystcore.PelangganFragment">
+
+    <Button
+        android:id="@+id/tambah_data_pelanggan"
+        android:layout_width="wrap_content"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:layout_height="25dp"
+        android:layout_gravity="right"
+        android:text="@string/tambah"
+        android:drawableLeft="@android:drawable/ic_input_add"
+        android:drawableTint="@color/colorAccent"
+        android:textSize="12sp"
+        android:background="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/tanggal_hari_ini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="10 April 2016"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"/>
+
+    <de.codecrafters.tableview.TableView
+        xmlns:table="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tabel_pelanggan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        table:columnCount="4" />
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/daftar_pesanan_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/bottom_border"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+                <TextView
+                    android:id="@+id/nama_pelanggan"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nama_pelanggan"
+                    android:background="@color/colorWhite"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>-->
+
+</LinearLayout>
