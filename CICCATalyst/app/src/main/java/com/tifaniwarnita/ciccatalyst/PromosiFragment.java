@@ -16,6 +16,7 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.tifaniwarnita.ciccatalyst.models.Event;
 
 import java.util.List;
 
@@ -26,46 +27,6 @@ public class PromosiFragment extends Fragment {
     public PromosiFragment() {
         // Required empty public constructor
     }
-
-    public class Event {
-        private String objectId;
-        private String judul;
-        private String tanggal;
-        private String deskripsi;
-
-        public String getObjectId() {
-            return objectId;
-        }
-
-        public void setObjectId( String objectId ) {
-            this.objectId = objectId;
-        }
-
-        public String getJudul() {
-            return judul;
-        }
-
-        public String getTanggal() {
-            return tanggal;
-        }
-
-        public void setJudul(String judul) {
-            this.judul = judul;
-        }
-
-        public void setTanggal(String tanggal) {
-            this.tanggal = tanggal;
-        }
-
-        public String getDeskripsi() {
-            return deskripsi;
-        }
-
-        public void setDeskripsi( String deskripsi ) {
-            this.deskripsi = deskripsi;
-        }
-    }
-
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -83,8 +44,6 @@ public class PromosiFragment extends Fragment {
                 List<Event> events = results.getData();
                 Log.d(PromosiFragment.class.getSimpleName(), "Size: " + events.size());
                 for (Event event: events) {
-                    Log.d("1", event.objectId);
-                    Log.d("1", event.deskripsi);
                     View eventView = inflater.inflate(R.layout.template_promosi, dataEventContainer, false);
                     ((TextView) eventView.findViewById(R.id.event_title)).setText(event.getJudul());
                     ((TextView) eventView.findViewById(R.id.event_date)).setText(event.getTanggal());
@@ -101,9 +60,6 @@ public class PromosiFragment extends Fragment {
                 Log.d("1", fault.toString());
             }
         });
-
-
-
 
         return v;
     }

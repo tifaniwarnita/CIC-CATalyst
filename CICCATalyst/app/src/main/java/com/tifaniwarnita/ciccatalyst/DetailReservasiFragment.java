@@ -19,7 +19,7 @@ import java.util.Date;
 public class DetailReservasiFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DATE = "date";
-    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm";
+    public static final String DEFAULT_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
 
     private Date date;
 
