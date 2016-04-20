@@ -22,4 +22,6 @@
 
     <string name="application_id">2E945EB9-5AAB-9DD3-FF6B-944234052D00</string>
     <string name="secret_key">BD2D4FCD-92D0-32EF-FF9C-9A085CFFC200</string>
+    <string name="jam">Jam</string>
+    <string name="status">Status Pemesanan</string>
 </resources>

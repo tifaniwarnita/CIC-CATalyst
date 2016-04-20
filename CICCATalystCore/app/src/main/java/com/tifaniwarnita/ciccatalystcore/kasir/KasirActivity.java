@@ -1,9 +1,8 @@
-package com.tifaniwarnita.ciccatalystcore;
+package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -22,11 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class KasirActivity extends AppCompatActivity implements ActionBar.TabListener {
+public class KasirActivity extends AppCompatActivity implements
+        ActionBar.TabListener, ReservasiFragment.ReservationFragmentListener,
+        DetailReservasiFragment.ReservationDetailFragmentListener {
     public static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
     private int actionBarActiveIndex = 0;
 
@@ -139,6 +142,25 @@ public class KasirActivity extends AppCompatActivity implements ActionBar.TabLis
     @Override
     public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
+    }
+
+    @Override
+    public void onSelectDate(Date date) {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+                .replace(R.id.fragment_container, DetailReservasiFragment.newInstance(
+                        DetailReservasiFragment.convertDateToString(date)
+                ))
+                //.addToBackStack(getResources().getString(R.string.reservation_detail))
+                .commit();
+    }
+
+    @Override
+    public void onReservasiButtonClick(Date date) {
+        /*TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
+                DetailReservasiFragment.convertDateToString(date)
+        );
+        tambahReservasiDialog.show(getSupportFragmentManager(), null);*/
     }
 
     /**

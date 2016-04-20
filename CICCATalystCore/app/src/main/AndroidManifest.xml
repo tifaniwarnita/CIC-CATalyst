@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".KasirActivity"
+            android:name=".kasir.KasirActivity"
             android:label="@string/app_name"></activity>
     </application>
 

@@ -1,32 +1,27 @@
-package com.tifaniwarnita.ciccatalystcore;
+package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 import com.tifaniwarnita.ciccatalystcore.model.PelangganTableDataAdapter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
-import de.codecrafters.tableview.TableView;
-import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 

@@ -1,13 +1,39 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tifaniwarnita.ciccatalystcore.ReservasiFragment">
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="kasir.ReservasiFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/calendar_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_view_reservasi_pesan_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Reservasi melalui aplikasi ini hanya bisa dilakukan oleh member\nSilakan login terlebih dahulu"
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="*) Ketersediaan tempat dapat dicek pada masing-masing tanggal"
+        android:textSize="12dp"
+        android:textColor="@android:color/darker_gray"/>
 
-</FrameLayout>
+
+</LinearLayout>

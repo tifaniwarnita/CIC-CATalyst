@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.tifaniwarnita.ciccatalystcore.PelangganFragment">
+    tools:context=".kasir.PelangganFragment">
 
     <de.codecrafters.tableview.SortableTableView
         xmlns:table="http://schemas.android.com/apk/res-auto"

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:context="com.tifaniwarnita.ciccatalystcore.KasirActivity" />
+        tools:context=".kasir.KasirActivity" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
