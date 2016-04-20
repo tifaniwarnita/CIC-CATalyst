@@ -2,6 +2,8 @@ package com.tifaniwarnita.ciccatalystcore;
 
 
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -17,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.backendless.Backendless;
 
 public class KasirActivity extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -63,22 +67,22 @@ public class KasirActivity extends AppCompatActivity implements ActionBar.TabLis
             }
         });
 
-        // For each of the sections in the app, add a tab to the action bar.
-        /*for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by
-            // the adapter. Also specify this Activity object, which implements
-            // the TabListener interface, as the callback (listener) for when
-            // this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setIcon(getApplicationContext().getResources().getDrawable(R.drawable.cic_icon_launcher))
+        createTab(0, getResources().getDrawable(R.drawable.icon_pelanggan));
+        createTab(1, getResources().getDrawable(R.drawable.icon_pesanan));
+        createTab(2, getResources().getDrawable(R.drawable.icon_reservasi));
 
-                            .setTabListener(this));
-        }*/
-        createTab(0, getResources().getDrawable(R.drawable.cic_icon_launcher));
-        createTab(1, getResources().getDrawable(R.drawable.admin_button));
-        createTab(2, getResources().getDrawable(R.drawable.kasir_button));
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        String application_id = getResources().getString(R.string.application_id);
+        String secret_key = getResources().getString(R.string.secret_key);
+        Backendless.initApp(this, application_id, secret_key, "v1");
     }
 
     public void createTab(int position, Drawable imageId) {

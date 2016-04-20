@@ -7,30 +7,7 @@
     android:padding="16dp"
     tools:context="com.tifaniwarnita.ciccatalystcore.PelangganFragment">
 
-    <Button
-        android:id="@+id/tambah_data_pelanggan"
-        android:layout_width="wrap_content"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:layout_height="25dp"
-        android:layout_gravity="right"
-        android:text="@string/tambah"
-        android:drawableLeft="@android:drawable/ic_input_add"
-        android:drawableTint="@color/colorAccent"
-        android:textSize="12sp"
-        android:background="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tanggal_hari_ini"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="10 April 2016"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"/>
-
-    <de.codecrafters.tableview.TableView
+    <de.codecrafters.tableview.SortableTableView
         xmlns:table="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tabel_pelanggan"
         android:layout_width="match_parent"

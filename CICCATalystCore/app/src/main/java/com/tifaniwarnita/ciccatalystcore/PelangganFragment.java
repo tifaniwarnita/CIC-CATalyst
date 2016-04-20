@@ -1,19 +1,28 @@
 package com.tifaniwarnita.ciccatalystcore;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 import com.tifaniwarnita.ciccatalystcore.model.PelangganTableDataAdapter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
+import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -24,15 +33,13 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
  */
 public class PelangganFragment extends Fragment {
 
-    private ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
-    private LinearLayout daftarPelangganContainer;
-    private static final String[][] DATA_TO_SHOW = { { "This", "is", "a", "test" },
-            { "and", "a", "second", "test" } };
+    private static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
+    private SortableTableView tableView;
 
 
     public PelangganFragment() {
         // Required empty public constructor
-        createPelangganDummy();
+        // createPelangganDummy();
     }
 
 
@@ -41,20 +48,41 @@ public class PelangganFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_pelanggan, container, false);
-        TableView tableView = (TableView) v.findViewById(R.id.tabel_pelanggan);
+        tableView = (SortableTableView) v.findViewById(R.id.tabel_pelanggan);
         String[] header = {"Data Pelanggan"};
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(), header));
-        String[][] data = {{dataPelanggan.get(0).getNama()},
-                {dataPelanggan.get(1).getNama()},
-                {dataPelanggan.get(2).getNama()}
-        };
         tableView.setColumnCount(1);
+        tableView.setColumnComparator(0, new PelangganComparator());
+        if (dataPelanggan.size() == 0)
+            updateDataPelanggan();
         //tableView.setColumnCount(dataPelanggan.size()+1);
         // tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(), header));
-        tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), dataPelanggan));
         /*daftarPelangganContainer = (LinearLayout) v.findViewById(R.id.daftar_pesanan_container);
         refreshPelangganList(inflater, daftarPelangganContainer);*/
         return v;
+    }
+
+    private void updateDataPelanggan() {
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+        Backendless.Persistence.of( Pelanggan.class ).find(new AsyncCallback<BackendlessCollection<Pelanggan>>(){
+            @Override
+            public void handleResponse( BackendlessCollection<Pelanggan> results )
+            {
+                progressDialog.dismiss();
+                PelangganFragment.dataPelanggan = new ArrayList<>(results.getData());
+                Log.d(PelangganFragment.class.getSimpleName(), "Size: " + dataPelanggan.size());
+                tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), dataPelanggan));
+            }
+            @Override
+            public void handleFault( BackendlessFault fault )
+            {
+                progressDialog.dismiss();
+                Toast.makeText(getContext(), "Koneksi gagal", Toast.LENGTH_SHORT).show();
+                // an error has occurred, the error code can be retrieved with fault.getCode()
+                Log.d("1", fault.toString());
+            }
+        });
+
     }
 
     private void refreshPelangganList(LayoutInflater inflater, ViewGroup container) {
@@ -68,7 +96,7 @@ public class PelangganFragment extends Fragment {
         }*/
     }
 
-    private void createPelangganDummy() {
+    /*private void createPelangganDummy() {
         dataPelanggan.add(new Pelanggan(
                 "1",
                 "Tifani Warnita",
@@ -90,8 +118,14 @@ public class PelangganFragment extends Fragment {
                 "lilalilaaingpusing@gmail.com",
                 "KUCINGBUMBUM"
         ));
+    }*/
+
+    private static class PelangganComparator implements Comparator<Pelanggan> {
+
+        @Override
+        public int compare(Pelanggan lhs, Pelanggan rhs) {
+            return lhs.getNama().compareTo(rhs.getNama());
+        }
     }
-
-
 
 }

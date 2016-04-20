@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@android:color/holo_orange_light</color>
-    <color name="colorPrimaryDark">@android:color/holo_orange_dark</color>
-    <color name="colorAccent">#FFFBB3</color>
+    <color name="colorPrimaryDark">#FFA000</color>
+    <color name="colorAccent">#F57C00</color>
+    <color name="colorAccentWait">#FFFBB3</color>
+    <color name="colorAccentMaterial">#FF5722</color>
     <color name="colorAccentTwo">#FFD06F</color>
     <color name="primary_text_default_material_dark">#000000</color>
     <color name="colorLightGray">#BEBEBE</color>

@@ -19,4 +19,7 @@
     <string name="id_pelanggan">id pelanggan</string>
     <string name="nama_pelanggan">Nama Pelanggan</string>
     <string name="tambah">TAMBAH</string>
+
+    <string name="application_id">2E945EB9-5AAB-9DD3-FF6B-944234052D00</string>
+    <string name="secret_key">BD2D4FCD-92D0-32EF-FF9C-9A085CFFC200</string>
 </resources>
