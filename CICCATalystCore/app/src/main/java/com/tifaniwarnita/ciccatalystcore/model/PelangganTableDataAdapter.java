@@ -32,7 +32,7 @@ public class PelangganTableDataAdapter extends TableDataAdapter<Pelanggan> {
                         .inflate(R.layout.template_pelanggan_list, null);
 
 
-                renderedView.setTag(R.string.id_pelanggan, pelanggan.getId());
+                renderedView.setTag(R.string.id_pelanggan, pelanggan.getObjectId());
                 ((TextView) renderedView.findViewById(R.id.nama_pelanggan)).setText(pelanggan.getNama());
                 break;
         }

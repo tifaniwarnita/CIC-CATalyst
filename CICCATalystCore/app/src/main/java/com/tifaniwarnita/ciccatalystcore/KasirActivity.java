@@ -19,10 +19,16 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
+
+import java.util.ArrayList;
 
 public class KasirActivity extends AppCompatActivity implements ActionBar.TabListener {
+    public static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
+    private int actionBarActiveIndex = 0;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -75,8 +81,10 @@ public class KasirActivity extends AppCompatActivity implements ActionBar.TabLis
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Toast.makeText(getApplicationContext(), "Miaw " + actionBarActiveIndex,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -119,6 +127,7 @@ public class KasirActivity extends AppCompatActivity implements ActionBar.TabLis
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
+        actionBarActiveIndex = tab.getPosition();
         mViewPager.setCurrentItem(tab.getPosition());
     }
 

@@ -2,6 +2,7 @@ package com.tifaniwarnita.ciccatalystcore;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.tifaniwarnita.ciccatalystcore.model.PelangganTableDataAdapter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
@@ -33,8 +35,8 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
  */
 public class PelangganFragment extends Fragment {
 
-    private static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
     private SortableTableView tableView;
+    private boolean isUpdating;
 
 
     public PelangganFragment() {
@@ -53,25 +55,40 @@ public class PelangganFragment extends Fragment {
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(), header));
         tableView.setColumnCount(1);
         tableView.setColumnComparator(0, new PelangganComparator());
-        if (dataPelanggan.size() == 0)
-            updateDataPelanggan();
-        //tableView.setColumnCount(dataPelanggan.size()+1);
-        // tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(getContext(), header));
-        /*daftarPelangganContainer = (LinearLayout) v.findViewById(R.id.daftar_pesanan_container);
-        refreshPelangganList(inflater, daftarPelangganContainer);*/
+        updateTabelPelanggan();
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateTabelPelanggan();
+    }
+
+    private void updateTabelPelanggan() {
+        if (KasirActivity.dataPelanggan.size() == 0 && !isUpdating) {
+            isUpdating = true;
+            updateDataPelanggan();
+        } else
+            tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), KasirActivity.dataPelanggan));
+    }
+
     private void updateDataPelanggan() {
+        KasirActivity.dataPelanggan.clear();
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
         Backendless.Persistence.of( Pelanggan.class ).find(new AsyncCallback<BackendlessCollection<Pelanggan>>(){
             @Override
             public void handleResponse( BackendlessCollection<Pelanggan> results )
             {
                 progressDialog.dismiss();
-                PelangganFragment.dataPelanggan = new ArrayList<>(results.getData());
-                Log.d(PelangganFragment.class.getSimpleName(), "Size: " + dataPelanggan.size());
-                tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), dataPelanggan));
+                List<Pelanggan> pelangganBaru = results.getData();
+                for (Pelanggan pelanggan: pelangganBaru) {
+                    KasirActivity.dataPelanggan.add(pelanggan);
+                }
+                Log.d(PelangganFragment.class.getSimpleName(), "Size: " + KasirActivity.dataPelanggan.size());
+                Log.d(PelangganFragment.class.getSimpleName(), "Nama: " + KasirActivity.dataPelanggan.get(0).getNama());
+                tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), KasirActivity.dataPelanggan));
+                isUpdating = false;
             }
             @Override
             public void handleFault( BackendlessFault fault )
@@ -79,7 +96,7 @@ public class PelangganFragment extends Fragment {
                 progressDialog.dismiss();
                 Toast.makeText(getContext(), "Koneksi gagal", Toast.LENGTH_SHORT).show();
                 // an error has occurred, the error code can be retrieved with fault.getCode()
-                Log.d("1", fault.toString());
+                Log.d(PelangganFragment.class.getSimpleName(), fault.toString());
             }
         });
 
