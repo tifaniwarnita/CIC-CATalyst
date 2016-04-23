@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bottom_border"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/pemesan"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Tifani Warnita"
+        android:textColor="@android:color/secondary_text_light"/>
+
+    <TextView
+        android:id="@+id/waktu_mulai"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="11.00"
+        android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_light"/>
+
+    <TextView
+        android:id="@+id/waktu_selesai"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="12.00"
+        android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_light"/>
+
+    <ImageButton
+        android:id="@+id/button_edit_pelanggan"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/icon_edit"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:id="@+id/button_hapus_pelanggan"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/icon_delete"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"/>
+
+</LinearLayout>

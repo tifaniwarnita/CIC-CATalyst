@@ -249,6 +249,7 @@
         android:id="@+id/text_view_reservasi_pesan_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_gravity="bottom"
         android:layout_margin="10dp"
         android:text="Reservasi melalui aplikasi ini hanya bisa dilakukan oleh member\nSilakan login terlebih dahulu"

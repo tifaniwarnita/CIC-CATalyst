@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@color/colorWhite"
-    tools:context=".kasir.TambahPelangganDialogFragment">
+    tools:context="com.tifaniwarnita.ciccatalystcore.kasir.TambahPesananDialogFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/tambah_data_pelanggan"
+            android:text="@string/tambah_data_pesanan"
             android:textSize="18dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
@@ -49,36 +49,6 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:theme="@style/FormInputLabelDialog">
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/edit_text_no_hp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="@string/no_hp"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:theme="@style/FormInputLabelDialog">
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/edit_text_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"/>
-
-    </android.support.design.widget.TextInputLayout>
-
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -91,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:text="@string/batal"
+            android:text="BATAL"
             android:background="@color/colorAccentThree" />
 
         <Button
@@ -99,8 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:text="@string/tambah"
+            android:text="RESERVASI"
             android:background="@color/colorPrimary"/>
 
     </LinearLayout>
 </LinearLayout>
+

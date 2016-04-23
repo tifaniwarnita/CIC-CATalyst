@@ -99,6 +99,9 @@ public class KasirActivity extends AppCompatActivity implements
                         tambahPelangganDialogFragment.show(getSupportFragmentManager(), null);
                         break;
                     case 1:
+                        TambahPesananDialogFragment tambahPesananDialogFragment = new TambahPesananDialogFragment();
+                        tambahPesananDialogFragment.show(getSupportFragmentManager(), null);
+                        break;
                     case 2:
                         TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
                                 DetailReservasiFragment.convertDateToString(new Date())

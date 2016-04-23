@@ -25,6 +25,7 @@
         android:text="Reservasi melalui aplikasi ini hanya bisa dilakukan oleh member\nSilakan login terlebih dahulu"
         android:textSize="10dp"
         android:textAlignment="center"
+        android:visibility="invisible"
         android:textColor="@android:color/holo_red_light"/>
 
     <TextView

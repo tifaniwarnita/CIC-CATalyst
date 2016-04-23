@@ -14,41 +14,4 @@
         android:layout_height="match_parent"
         table:columnCount="4" />
 
-    <!--<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:id="@+id/daftar_pesanan_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/border">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@drawable/bottom_border"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-                <TextView
-                    android:id="@+id/nama_pelanggan"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nama_pelanggan"
-                    android:background="@color/colorWhite"
-                    android:textSize="16dp"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>-->
-
 </LinearLayout>

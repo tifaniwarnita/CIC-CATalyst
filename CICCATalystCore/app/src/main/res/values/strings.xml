@@ -34,6 +34,7 @@
     <string name="tanggal">Tanggal</string>
     <string name="waktu_mulai">Waktu Mulai</string>
     <string name="waktu_selesai">Waktu Selesai</string>
+    <string name="tambah_data_pesanan">Tambah Data Pesanan</string>
 
     <string-array name="jam_mulai_selesai_reservasi">
         <item>11.00</item>
