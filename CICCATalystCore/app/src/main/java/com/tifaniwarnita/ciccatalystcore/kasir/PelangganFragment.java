@@ -68,9 +68,10 @@ public class PelangganFragment extends Fragment {
             tableView.setDataAdapter(new PelangganTableDataAdapter(getContext(), KasirActivity.dataPelanggan));
     }
 
-    private void updateDataPelanggan() {
+    public void updateDataPelanggan() {
         KasirActivity.dataPelanggan.clear();
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+        // TODO: Ambil data pelanggan yang ditambahin hari ini aja
         Backendless.Persistence.of( Pelanggan.class ).find(new AsyncCallback<BackendlessCollection<Pelanggan>>(){
             @Override
             public void handleResponse( BackendlessCollection<Pelanggan> results )
@@ -96,41 +97,6 @@ public class PelangganFragment extends Fragment {
         });
 
     }
-
-    private void refreshPelangganList(LayoutInflater inflater, ViewGroup container) {
-        /*for(int i = 0; i<dataPelanggan.size(); i++) {
-            daftarPelangganContainer.addView(inflater.inflate(R.layout.template_horizontal_line, container, false));
-            View v = inflater.inflate(R.layout.template_pelanggan_list, container, false);
-            v.setTag(R.string.id_pelanggan, dataPelanggan.get(i).getId());
-            ((TextView) v.findViewById(R.id.nama_pelanggan)).setText(dataPelanggan.get(i).getNama());
-            //TODO BUTTON LISTENER
-            daftarPelangganContainer.addView(v);
-        }*/
-    }
-
-    /*private void createPelangganDummy() {
-        dataPelanggan.add(new Pelanggan(
-                "1",
-                "Tifani Warnita",
-                "081286264299",
-                "tifaniwarnita@gmail.com",
-                "KUCINGTERBANG"
-        ));
-        dataPelanggan.add(new Pelanggan(
-                "2",
-                "Aufar Gilbran",
-                "085722835981",
-                "kucingimbalance@gmail.com",
-                "KUCINGMEONG"
-        ));
-        dataPelanggan.add(new Pelanggan(
-                "3",
-                "Lucky Cahyadi",
-                "081322835981",
-                "lilalilaaingpusing@gmail.com",
-                "KUCINGBUMBUM"
-        ));
-    }*/
 
     private static class PelangganComparator implements Comparator<Pelanggan> {
 

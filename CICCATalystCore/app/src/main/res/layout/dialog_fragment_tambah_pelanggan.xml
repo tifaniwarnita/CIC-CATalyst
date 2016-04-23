@@ -1,12 +1,12 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@color/colorWhite"
-    tools:context="com.tifaniwarnita.ciccatalyst.TambahReservasiDialogFragment">
+    tools:context=".kasir.TambahPelangganDialogFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,78 +27,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/reservasi_tempat"
+            android:text="@string/tambah_data_pelanggan"
             android:textSize="18dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
 
     </LinearLayout>
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_margin="5dp"
-        android:text="@string/tanggal"/>
+        android:layout_marginBottom="5dp"
+        app:theme="@style/FormInputLabelDialog">
 
-    <TextView
-        android:id="@+id/text_view_tanggal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textSize="16dp"
-        android:textColor="@android:color/black"
-        android:text="15/06/2016"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_text_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/nama"/>
 
-    <LinearLayout
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="5dp"
+        app:theme="@style/FormInputLabelDialog">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_text_no_hp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:inputType="number"
+            android:hint="@string/no_hp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/waktu_mulai"/>
+    </android.support.design.widget.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/spinner_waktu_mulai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:theme="@style/FormInputLabelDialog">
 
-            </Spinner>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_text_email"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/waktu_selesai"/>
-
-            <Spinner
-                android:id="@+id/spinner_waktu_selesai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </Spinner>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -116,7 +95,7 @@
             android:background="@color/colorAccentThree" />
 
         <Button
-            android:id="@+id/button_reservasi"
+            android:id="@+id/button_tambah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -124,5 +103,4 @@
             android:background="@color/colorPrimary"/>
 
     </LinearLayout>
-
 </LinearLayout>

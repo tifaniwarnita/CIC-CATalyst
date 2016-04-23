@@ -14,6 +14,7 @@ import com.tifaniwarnita.ciccatalystcore.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -25,11 +26,11 @@ public class DetailReservasiFragment extends Fragment {
     public static final String DEFAULT_DATE_FORMAT = "MM/dd/yyyy HH:mm:ss";
 
     private Date date;
+    private ArrayList<TextView> textViewJam = new ArrayList<>();
 
     private ReservationDetailFragmentListener fragmentListener;
 
     public interface ReservationDetailFragmentListener {
-        void onReservasiButtonClick(Date date);
         void onDetailReservasiBack();
     }
 
@@ -61,27 +62,30 @@ public class DetailReservasiFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_detail_reservasi, container, false);
 
         TextView textViewTanggal = (TextView) v.findViewById(R.id.text_view_tanggal);
-//        Button buttonReservasi = (Button) v.findViewById(R.id.button_reservation);
         TextView textViewInfo = (TextView) v.findViewById(R.id.text_view_reservasi_pesan_login);
+        int[] idJam = {
+                R.id.jam_1,
+                R.id.jam_2,
+                R.id.jam_3,
+                R.id.jam_4,
+                R.id.jam_5,
+                R.id.jam_6,
+                R.id.jam_7,
+                R.id.jam_8,
+                R.id.jam_9,
+                R.id.jam_10,
+                R.id.jam_11,
+        };
+
+        for (int i=0; i<idJam.length; i++) {
+            TextView t = (TextView) v.findViewById(idJam[i]);
+            textViewJam.add(t);
+        }
 
         if (date != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MM yyyy");
             textViewTanggal.setText(dateFormat.format(date));
         }
-
-        /*if (PreferencesController.isLoggedIn(getContext())) {
-            buttonReservasi.setVisibility(View.VISIBLE);
-            textViewInfo.setVisibility(View.INVISIBLE);
-            buttonReservasi.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fragmentListener.onReservasiButtonClick(date);
-                }
-            });
-        } else {
-            buttonReservasi.setVisibility(View.INVISIBLE);
-            textViewInfo.setVisibility(View.VISIBLE);
-        }*/
 
         return v;
     }
@@ -122,5 +126,11 @@ public class DetailReservasiFragment extends Fragment {
                 (DetailReservasiFragment.DEFAULT_DATE_FORMAT);
         dateString = dateFormat.format(date);
         return dateString;
+    }
+
+    public void updateDummy(int mulai, int selesai) {
+        for(int i = mulai; i<(mulai + selesai)+1; i++) {
+            textViewJam.get(i).setText("Sudah dipesan");
+        }
     }
 }

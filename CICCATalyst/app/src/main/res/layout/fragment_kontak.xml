@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:text="@string/our_menu"
+            android:text="@string/contacts"
             android:textColor="@android:color/black" />
 
     </LinearLayout>

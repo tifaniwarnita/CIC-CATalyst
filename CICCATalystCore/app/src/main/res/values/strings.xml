@@ -15,7 +15,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_kasir">KasirActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="tambah_data_pelanggan">Data Pelanggan</string>
+    <string name="tambah_data_pelanggan">Tambah Data Pelanggan</string>
     <string name="id_pelanggan">id pelanggan</string>
     <string name="nama_pelanggan">Nama Pelanggan</string>
     <string name="tambah">TAMBAH</string>
@@ -26,4 +26,27 @@
     <string name="status">Status Pemesanan</string>
     <string name="detail_reservasi">Detail Reservasi</string>
     <string name="logout">Logout</string>
+    <string name="batal">BATAL</string>
+    <string name="nama">Nama</string>
+    <string name="no_hp">No. HP</string>
+    <string name="email">Email</string>
+    <string name="reservasi_tempat">Reservasi Tempat</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="waktu_mulai">Waktu Mulai</string>
+    <string name="waktu_selesai">Waktu Selesai</string>
+
+    <string-array name="jam_mulai_selesai_reservasi">
+        <item>11.00</item>
+        <item>12.00</item>
+        <item>13.00</item>
+        <item>14.00</item>
+        <item>15.00</item>
+        <item>16.00</item>
+        <item>17.00</item>
+        <item>18.00</item>
+        <item>19.00</item>
+        <item>20.00</item>
+        <item>21.00</item>
+        <item>22.00</item>
+    </string-array>
 </resources>

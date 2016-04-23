@@ -31,9 +31,16 @@ import java.util.Date;
 
 public class KasirActivity extends AppCompatActivity implements
         ActionBar.TabListener, ReservasiFragment.ReservationFragmentListener,
-        DetailReservasiFragment.ReservationDetailFragmentListener {
+        DetailReservasiFragment.ReservationDetailFragmentListener,
+        TambahReservasiDialogFragment.TambahReservasiDialogFragmentListener,
+        TambahPelangganDialogFragment.TambahPelangganDialogFragmentListener {
+
     public static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
     private int actionBarActiveIndex = 0;
+
+    private PelangganFragment pelangganFragment = new PelangganFragment();
+    private PesananFragment pesananFragment = new PesananFragment();
+    private ReservasiFragment reservasiFragment = new ReservasiFragment();
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -86,10 +93,19 @@ public class KasirActivity extends AppCompatActivity implements
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                Toast.makeText(getApplicationContext(), "Miaw " + actionBarActiveIndex,
-                        Toast.LENGTH_SHORT).show();
+                switch (actionBarActiveIndex) {
+                    case 0:
+                        TambahPelangganDialogFragment tambahPelangganDialogFragment = new TambahPelangganDialogFragment();
+                        tambahPelangganDialogFragment.show(getSupportFragmentManager(), null);
+                        break;
+                    case 1:
+                    case 2:
+                        TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
+                                DetailReservasiFragment.convertDateToString(new Date())
+                        );
+                        tambahReservasiDialog.show(getSupportFragmentManager(), null);
+                        break;
+                }
             }
         });
 
@@ -156,16 +172,25 @@ public class KasirActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onReservasiButtonClick(Date date) {
-        /*TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
-                DetailReservasiFragment.convertDateToString(date)
-        );
-        tambahReservasiDialog.show(getSupportFragmentManager(), null);*/
+    public void onDetailReservasiBack() {
+
     }
 
     @Override
-    public void onDetailReservasiBack() {
+    public void onReservasi(int i, int j) {
 
+    }
+
+    @Override
+    public void onTambahPelanggan(String nama, String noHP, String email) {
+        // TODO: Masukin ke db
+        /*
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+        kalo udah isi db dismiss
+        habis itu panggil
+        pelangganFragment.updateDataPelanggan(); -> belum dicoba sih...
+
+         */
     }
 
     /**
@@ -219,11 +244,11 @@ public class KasirActivity extends AppCompatActivity implements
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    return new PelangganFragment();
+                    return pelangganFragment;
                 case 1:
-                    return new PesananFragment();
+                    return pesananFragment;
                 case 2:
-                    return new ReservasiFragment();
+                    return reservasiFragment;
                 default:
                     return null;
             }

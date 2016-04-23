@@ -14,21 +14,27 @@ import com.tifaniwarnita.ciccatalystcore.R;
 import java.util.Date;
 
 public class DetailReservasiActivity extends AppCompatActivity
-        implements DetailReservasiFragment.ReservationDetailFragmentListener {
+        implements DetailReservasiFragment.ReservationDetailFragmentListener,
+        TambahReservasiDialogFragment.TambahReservasiDialogFragmentListener {
 
+    private Date date = null;
+    private DetailReservasiFragment detailReservasiFragment = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_reservasi);
 
-        String date = null;
         if (getIntent().hasExtra(getResources().getString(R.string.detail_reservasi)))
-            date = getIntent().getStringExtra(getResources().getString(R.string.detail_reservasi));
+            date = DetailReservasiFragment.convertStringToDate(getIntent().getStringExtra(getResources().getString(R.string.detail_reservasi)));
+        else
+            date = new Date();
 
         FragmentManager fm = getSupportFragmentManager();
+        detailReservasiFragment = DetailReservasiFragment.newInstance(
+                DetailReservasiFragment.convertDateToString(date));
         if (date != null) {
             fm.beginTransaction()
-                    .replace(R.id.fragment_container, DetailReservasiFragment.newInstance(date))
+                    .replace(R.id.fragment_container, detailReservasiFragment)
                     .commit();
         } else {
             fm.beginTransaction()
@@ -44,17 +50,23 @@ public class DetailReservasiActivity extends AppCompatActivity
                         .setAction("Action", null).show();*/
                 Toast.makeText(getApplicationContext(), "DETAIL RESERVASI",
                         Toast.LENGTH_SHORT).show();
+                TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
+                        DetailReservasiFragment.convertDateToString(date)
+                );
+                tambahReservasiDialog.show(getSupportFragmentManager(), null);
             }
         });
     }
 
     @Override
-    public void onReservasiButtonClick(Date date) {
-
+    public void onDetailReservasiBack() {
+        detailReservasiFragment = null;
     }
 
     @Override
-    public void onDetailReservasiBack() {
-
+    public void onReservasi(int i, int j) {
+        if (detailReservasiFragment != null) {
+            detailReservasiFragment.updateDummy(i, j);
+        }
     }
 }

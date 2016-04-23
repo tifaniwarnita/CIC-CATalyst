@@ -1,4 +1,4 @@
-package com.tifaniwarnita.ciccatalyst;
+package com.tifaniwarnita.ciccatalystcore.kasir;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -23,6 +23,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tifaniwarnita.ciccatalystcore.R;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -139,7 +141,6 @@ public class TambahReservasiDialogFragment extends DialogFragment {
         builder.setView(promptView);
         final Dialog dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
 //        dialog.setCancelable(false);
 //        dialog.setCanceledOnTouchOutside(false);
 

@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/cic_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/cic_icon_launcher"
             android:scaleType="centerInside"/>
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/detail_reservasi"
             android:textColor="@android:color/black" />

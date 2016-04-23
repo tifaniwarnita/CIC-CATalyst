@@ -9,4 +9,5 @@
     <color name="primary_text_default_material_dark">#000000</color>
     <color name="colorLightGray">#BEBEBE</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorAccentThree">#FFDC93</color>
 </resources>
