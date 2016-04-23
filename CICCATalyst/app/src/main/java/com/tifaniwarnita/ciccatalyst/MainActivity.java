@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
 
     private NavigationView navigationView;
     static final int REQUEST_TOKEN = 1;
+    private DetailReservasiFragment detailReservasiFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,12 +203,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onSelectDate(Date date) {
         FragmentManager fm = getSupportFragmentManager();
-            fm.beginTransaction()
-                    .replace(R.id.fragment_container, DetailReservasiFragment.newInstance(
-                            DetailReservasiFragment.convertDateToString(date)
-                    ))
-                    .addToBackStack(getResources().getString(R.string.reservation_detail))
-                    .commit();
+        detailReservasiFragment =  DetailReservasiFragment.newInstance(
+                DetailReservasiFragment.convertDateToString(date)
+        );
+
+        fm.beginTransaction()
+                .replace(R.id.fragment_container, detailReservasiFragment)
+                .addToBackStack(getResources().getString(R.string.reservation_detail))
+                .commit();
     }
 
     @Override
@@ -216,5 +219,17 @@ public class MainActivity extends AppCompatActivity
                 DetailReservasiFragment.convertDateToString(date)
         );
         tambahReservasiDialog.show(getSupportFragmentManager(), null);
+    }
+
+    @Override
+    public void onBackButtonClicked() {
+        detailReservasiFragment = null;
+    }
+
+    @Override
+    public void onReservasi(int i, int j) {
+        if (detailReservasiFragment != null) {
+            detailReservasiFragment.updateDummy(i, j);
+        }
     }
 }
