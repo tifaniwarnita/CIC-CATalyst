@@ -30,6 +30,7 @@ public class DetailReservasiFragment extends Fragment {
 
     public interface ReservationDetailFragmentListener {
         void onReservasiButtonClick(Date date);
+        void onDetailReservasiBack();
     }
 
     public DetailReservasiFragment() {
@@ -99,6 +100,7 @@ public class DetailReservasiFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        fragmentListener.onDetailReservasiBack();
         fragmentListener = null;
     }
 

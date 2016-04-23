@@ -1,6 +1,7 @@
 package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.tifaniwarnita.ciccatalystcore.MainActivity;
 import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 
@@ -121,7 +123,8 @@ public class KasirActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            Toast.makeText(getApplicationContext(), "LOGOUT", Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -146,13 +149,10 @@ public class KasirActivity extends AppCompatActivity implements
 
     @Override
     public void onSelectDate(Date date) {
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction()
-                .replace(R.id.fragment_container, DetailReservasiFragment.newInstance(
-                        DetailReservasiFragment.convertDateToString(date)
-                ))
-                //.addToBackStack(getResources().getString(R.string.reservation_detail))
-                .commit();
+        Intent intent = new Intent(this, DetailReservasiActivity.class);
+        intent.putExtra(getResources().getString(R.string.detail_reservasi),
+                DetailReservasiFragment.convertDateToString(date));
+        startActivity(intent);
     }
 
     @Override
@@ -161,6 +161,11 @@ public class KasirActivity extends AppCompatActivity implements
                 DetailReservasiFragment.convertDateToString(date)
         );
         tambahReservasiDialog.show(getSupportFragmentManager(), null);*/
+    }
+
+    @Override
+    public void onDetailReservasiBack() {
+
     }
 
     /**
@@ -222,7 +227,6 @@ public class KasirActivity extends AppCompatActivity implements
                 default:
                     return null;
             }
-            //return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override

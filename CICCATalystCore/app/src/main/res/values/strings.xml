@@ -24,4 +24,6 @@
     <string name="secret_key">BD2D4FCD-92D0-32EF-FF9C-9A085CFFC200</string>
     <string name="jam">Jam</string>
     <string name="status">Status Pemesanan</string>
+    <string name="detail_reservasi">Detail Reservasi</string>
+    <string name="logout">Logout</string>
 </resources>
