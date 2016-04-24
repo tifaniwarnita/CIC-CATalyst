@@ -25,15 +25,4 @@
         android:src="@drawable/icon_edit"
         android:scaleType="centerInside"
         android:background="@android:color/transparent"/>
-
-    <ImageButton
-        android:id="@+id/button_hapus_pelanggan"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/icon_delete"
-        android:scaleType="centerInside"
-        android:background="@android:color/transparent"/>
-
 </LinearLayout>

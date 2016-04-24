@@ -58,7 +58,7 @@ public class TambahPelangganDialogFragment extends DialogFragment {
                 String noHP = editTextNoHP.getText().toString();
                 String email = editTextEmail.getText().toString();
                 dialogFragmentListener.onTambahPelanggan(nama, noHP, email);
-                Toast.makeText(getContext(), "Menambah data pelanggan berhasil", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Data pelanggan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });
