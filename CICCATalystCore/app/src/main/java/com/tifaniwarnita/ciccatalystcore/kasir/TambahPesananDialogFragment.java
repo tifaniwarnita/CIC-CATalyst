@@ -8,20 +8,37 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.tifaniwarnita.ciccatalystcore.R;
+import com.tifaniwarnita.ciccatalystcore.model.EsKrim;
+import com.tifaniwarnita.ciccatalystcore.model.EsKrimLayout;
+import com.tifaniwarnita.ciccatalystcore.model.MinumanLayout;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TambahPesananDialogFragment extends DialogFragment {
-
+    private Spinner spinnerWaktuMulai;
+    private Spinner spinnerWaktuSelesai;
+    private LinearLayout esKrimContainer;
+    private LinearLayout minumanContainer;
+    private ArrayList<EsKrimLayout> pesananEsKrim = new ArrayList<>();
+    private ArrayList<MinumanLayout> pesananMinuman = new ArrayList<>();
 
     public TambahPesananDialogFragment() {
         // Required empty public constructor
@@ -34,9 +51,9 @@ public class TambahPesananDialogFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View promptView = inflater.inflate(R.layout.dialog_fragment_tambah_pesanan, null);
 
-       /* final EditText editTextNama = (EditText) promptView.findViewById(R.id.edit_text_nama);
-        final EditText editTextNoHP = (EditText) promptView.findViewById(R.id.edit_text_no_hp);
-        final EditText editTextEmail = (EditText) promptView.findViewById(R.id.edit_text_email);*/
+        final EditText editTextNama = (EditText) promptView.findViewById(R.id.edit_text_nama);
+        esKrimContainer = (LinearLayout) promptView.findViewById(R.id.es_krim_container);
+        minumanContainer = (LinearLayout) promptView.findViewById(R.id.minuman_container);
 
         Button buttonBatal = (Button) promptView.findViewById(R.id.button_batal);
         buttonBatal.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +63,57 @@ public class TambahPesananDialogFragment extends DialogFragment {
             }
         });
 
-        Button buttonReservasi = (Button) promptView.findViewById(R.id.button_tambah);
-        buttonReservasi.setOnClickListener(new View.OnClickListener() {
+        Button buttonTambah = (Button) promptView.findViewById(R.id.button_tambah);
+        buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* String nama = editTextNama.getText().toString();
-                String noHP = editTextNoHP.getText().toString();
-                String email = editTextEmail.getText().toString();
-                dialogFragmentListener.onTambahPelanggan(nama, noHP, email);*/
-                Toast.makeText(getContext(), "Menambah data pesanan berhasil", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });
+
+        LinearLayout buttonTambahEsKrim = (LinearLayout) promptView.findViewById(R.id.button_tambah_es_krim);
+        LinearLayout buttonTambahMinuman = (LinearLayout) promptView.findViewById(R.id.button_tambah_minuman);
+
+        buttonTambahEsKrim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tambahEsKrim();
+            }
+        });
+
+        buttonTambahMinuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tambahMinuman();
+            }
+        });
+
+        String[] waktu = getResources().getStringArray(R.array.jam_mulai_selesai_reservasi);
+        spinnerWaktuMulai = (Spinner) promptView.findViewById(R.id.spinner_waktu_mulai);
+        ArrayAdapter<CharSequence> adapterWaktuMulai = new ArrayAdapter<CharSequence>(
+                getActivity(),
+                android.R.layout.simple_spinner_item);
+        for (int i=0; i<waktu.length-1; i++) {
+            adapterWaktuMulai.add(waktu[i]);
+        }
+        adapterWaktuMulai.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWaktuMulai.setAdapter(adapterWaktuMulai);
+        spinnerWaktuMulai.setOnItemSelectedListener(spinnerWaktuMulaiListener);
+        spinnerWaktuSelesai = (Spinner) promptView.findViewById(R.id.spinner_waktu_selesai);
+        ArrayAdapter<CharSequence> adapterWaktuSelesai = new ArrayAdapter<CharSequence>(
+                getActivity(),
+                android.R.layout.simple_spinner_item);
+        for (int i=1; i<waktu.length; i++) {
+            adapterWaktuSelesai.add(waktu[i]);
+        }
+        adapterWaktuSelesai.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWaktuSelesai.setAdapter(adapterWaktuSelesai);
+
+        tambahEsKrim();
+        tambahMinuman();
+
+
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -70,4 +126,39 @@ public class TambahPesananDialogFragment extends DialogFragment {
 
         return dialog;
     }
+
+    private void tambahEsKrim() {
+        View tambahEsKrimView = LayoutInflater.from(getContext()).inflate(R.layout.template_tambah_es_krim, esKrimContainer, false);
+        EsKrimLayout esKrimLayout = new EsKrimLayout(tambahEsKrimView, pesananEsKrim.size()+1);
+        pesananEsKrim.add(esKrimLayout);
+        esKrimContainer.addView(tambahEsKrimView);
+    }
+
+    private void tambahMinuman() {
+        View tambahMinumanView = LayoutInflater.from(getContext()).inflate(R.layout.template_tambah_minuman, minumanContainer, false);
+        MinumanLayout minumanLayout = new MinumanLayout(tambahMinumanView, pesananMinuman.size()+1);
+        pesananMinuman.add(minumanLayout);
+        minumanContainer.addView(tambahMinumanView);
+    }
+
+    private Spinner.OnItemSelectedListener spinnerWaktuMulaiListener = new Spinner.OnItemSelectedListener() {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String[] waktu = getResources().getStringArray(R.array.jam_mulai_selesai_reservasi);
+            ArrayAdapter<CharSequence> adapterWaktuSelesai = new ArrayAdapter<CharSequence>(
+                    getActivity(),
+                    android.R.layout.simple_spinner_item);
+            for (int i=position+1; i<waktu.length; i++) {
+                adapterWaktuSelesai.add(waktu[i]);
+            }
+            adapterWaktuSelesai.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerWaktuSelesai.setAdapter(adapterWaktuSelesai);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
 }

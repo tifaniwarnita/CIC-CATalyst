@@ -36,7 +36,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,6 +47,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="5dp"
                 app:theme="@style/FormInputLabelDialog">
 
@@ -69,6 +72,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -110,54 +115,153 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#DDDDDD" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/eskrim"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="18dp"/>
-
-                <ImageButton
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/button_add"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="30dp"
+                android:id="@+id/es_krim_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_tambah_es_krim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="16dp"
                 android:orientation="horizontal"
+                android:background="#EEEEEE"
                 android:gravity="end">
 
-                <Button
-                    android:id="@+id/button_batal"
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/button_add"
+                    android:layout_gravity="end"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:text="@string/batal"
-                    android:background="@color/colorAccentThree" />
+                    android:text="@string/tambah_es_krim"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
 
-                <Button
-                    android:id="@+id/button_tambah"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#DDDDDD" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:text="@string/tambah"
-                    android:background="@color/colorPrimary"/>
+                    android:text="@string/minuman"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18dp"/>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/minuman_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_tambah_minuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="16dp"
+                android:orientation="horizontal"
+                android:background="#EEEEEE"
+                android:gravity="end">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/button_add"
+                    android:layout_gravity="end"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tambah_minuman"
+                    android:layout_gravity="center_vertical"/>
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/button_batal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="@string/batal"
+            android:background="@color/colorAccentThree" />
+
+        <Button
+            android:id="@+id/button_tambah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="@string/tambah"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
 </LinearLayout>
 

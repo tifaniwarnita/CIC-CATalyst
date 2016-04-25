@@ -36,6 +36,12 @@
     <string name="waktu_selesai">Waktu Selesai</string>
     <string name="tambah_data_pesanan">Tambah Data Pesanan</string>
     <string name="eskrim">Es Krim</string>
+    <string name="flakes">Flakes</string>
+    <string name="rasa_es_krim">Rasa Es Krim</string>
+    <string name="topping">Topping</string>
+    <string name="minuman">Minuman</string>
+    <string name="tambah_es_krim">Tambah Es Krim</string>
+    <string name="tambah_minuman">Tambah Minuman</string>
 
     <string-array name="jam_mulai_selesai_reservasi">
         <item>11.00</item>
@@ -50,5 +56,42 @@
         <item>20.00</item>
         <item>21.00</item>
         <item>22.00</item>
+    </string-array>
+
+    <string-array name="array_flakes">
+        <item>Corn Flakes</item>
+        <item>Fruit Loops</item>
+        <item>Koko Krunch</item>
+        <item>Honey Stars</item>
+    </string-array>
+
+    <string-array name="array_rasa_es_krim">
+        <item>Vanilla</item>
+        <item>Taro</item>
+        <item>Ogura</item>
+        <item>Green Tea</item>
+        <item>Strawberry</item>
+        <item>Chocolate</item>
+    </string-array>
+
+    <string-array name="array_topping">
+        <item>Milo</item>
+        <item>Oreo</item>
+        <item>Choco Chips</item>
+        <item>Sprinkles</item>
+        <item>Palm Sugar</item>
+        <item>Marshmallow</item>
+        <item>Nutella</item>
+        <item>Pocky</item>
+    </string-array>
+
+    <string-array name="array_minuman">
+        <item>Tea</item>
+        <item>Sweet Tea</item>
+        <item>Lemon Tea</item>
+        <item>Thai Tea</item>
+        <item>Green Tea</item>
+        <item>Chocolate</item>
+        <item>Mineral Water</item>
     </string-array>
 </resources>
