@@ -83,6 +83,8 @@ public class AdminActivity extends AppCompatActivity  implements
                         break;
                     case 1:
                         //TODO: TAMBAH EVENT
+                        TambahEventDialogFragment tambahPelangganDialogFragment = new TambahEventDialogFragment();
+                        tambahPelangganDialogFragment.show(getSupportFragmentManager(), null);
                         break;
                 }
             }

@@ -41,7 +41,7 @@ public class StatistikFragment extends Fragment {
     };
 
     protected String[] mParties = new String[] {
-            "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
+            "Corn Flakes", "Fruit Loops", "Koko Krunch", "Honey Stars", "Party E", "Party F", "Party G", "Party H",
             "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
             "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
             "Party Y", "Party Z"
@@ -83,7 +83,7 @@ public class StatistikFragment extends Fragment {
 
         mChart.setCenterTextTypeface(Typeface.createFromAsset(getActivity().getAssets(), "OpenSans-Light.ttf"));
         mChart.setCenterText(generateCenterSpannableText());
-        mChart.setCenterText("Statistik Es Krim Favorit");
+        mChart.setCenterText("STATISTIK PEMESANAN\nES KRIM");
 
         mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(Color.WHITE);
@@ -139,7 +139,7 @@ public class StatistikFragment extends Fragment {
         for (int i = 0; i < count + 1; i++)
             xVals.add(mParties[i % mParties.length]);
 
-        PieDataSet dataSet = new PieDataSet(yVals1, "Election Results");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Jenis Corn Flakes");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 

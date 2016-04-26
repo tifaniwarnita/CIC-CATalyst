@@ -45,6 +45,10 @@
     <string name="tambah_minuman">Tambah Minuman</string>
     <string name="data_pengunjung_pesanan"><![CDATA[Data Pengunjung & Pesanan]]></string>
     <string name="event">Promosi</string>
+    <string name="jangka_waktu">Jangka Waktu</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="judul_event">Judul Promosi</string>
+    <string name="tambah_data_promosi">Tambah Data Promosi</string>
 
     <string-array name="jam_mulai_selesai_reservasi">
         <item>11.00</item>
