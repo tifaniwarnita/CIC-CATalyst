@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.messaging.MessageStatus;
+import com.backendless.messaging.PublishOptions;
 import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.EsKrim;
 import com.tifaniwarnita.ciccatalystcore.model.EsKrimLayout;
@@ -67,6 +73,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                publish("Title", "Message");
                 Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
@@ -125,6 +132,25 @@ public class TambahPesananDialogFragment extends DialogFragment {
 //        dialog.setCanceledOnTouchOutside(false);
 
         return dialog;
+    }
+
+    private void publish(String title, String message) {
+        Log.d(this.getClass().getSimpleName(), "Publish");
+        PublishOptions publishOptions = new PublishOptions();
+        publishOptions.putHeader( "android-ticker-text", "You just got a push notification!");
+        publishOptions.putHeader( "android-content-title", title );
+        publishOptions.putHeader( "android-content-text", message);
+        Backendless.Messaging.publish("pesanan", "Hi Devices!", publishOptions, new AsyncCallback<MessageStatus>() {
+            @Override
+            public void handleResponse(MessageStatus response) {
+                Log.d(TambahPesananDialogFragment.class.getSimpleName(), response.toString());
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.d(TambahPesananDialogFragment.class.getSimpleName(), fault.toString());
+            }
+        });
     }
 
     private void tambahEsKrim() {

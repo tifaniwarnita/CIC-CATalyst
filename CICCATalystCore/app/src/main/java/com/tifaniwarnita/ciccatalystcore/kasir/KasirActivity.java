@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.tifaniwarnita.ciccatalystcore.MainActivity;
 import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 
@@ -119,6 +118,19 @@ public class KasirActivity extends AppCompatActivity implements
         String application_id = getResources().getString(R.string.application_id);
         String secret_key = getResources().getString(R.string.secret_key);
         Backendless.initApp(this, application_id, secret_key, "v1");
+
+        String gcmSenderId = getResources().getString(R.string.google_api_project_number);
+        Backendless.Messaging.registerDevice(gcmSenderId, "pesanan", new AsyncCallback<Void>() {
+            @Override
+            public void handleResponse(Void response) {
+                Log.d(KasirActivity.class.getSimpleName(), "Registered");
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.d(KasirActivity.class.getSimpleName(), fault.toString());
+            }
+        });
     }
 
     public void createTab(int position, Drawable imageId) {
