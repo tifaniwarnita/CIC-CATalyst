@@ -23,7 +23,7 @@ public class AutentikasiAdminFragment extends Fragment {
     private AutentikasiAdminFragmentListener fragmentListener;
 
     public interface AutentikasiAdminFragmentListener {
-
+        void berhasilLogin();
     }
 
     public AutentikasiAdminFragment() {
@@ -57,6 +57,7 @@ public class AutentikasiAdminFragment extends Fragment {
                         // Move to admin panel
                         Toast.makeText(getContext(), "Login berhasil",
                                 Toast.LENGTH_SHORT).show();
+                        fragmentListener.berhasilLogin();
                         // TODO:
                     } else {
                         Toast.makeText(getContext(), "Username atau password salah ",

@@ -1,58 +1,40 @@
-package com.tifaniwarnita.ciccatalystcore.kasir;
+package com.tifaniwarnita.ciccatalystcore.admin;
 
-
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.tifaniwarnita.ciccatalystcore.AutentikasiActivity;
-import com.tifaniwarnita.ciccatalystcore.MainActivity;
 import com.tifaniwarnita.ciccatalystcore.PilihanAksesFragment;
 import com.tifaniwarnita.ciccatalystcore.R;
-import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
 
-import java.util.ArrayList;
-import java.util.Date;
+public class AdminActivity extends AppCompatActivity  implements
+        ActionBar.TabListener, SeekBar.OnSeekBarChangeListener,
+        OnChartValueSelectedListener {
 
-public class KasirActivity extends AppCompatActivity implements
-        ActionBar.TabListener, ReservasiFragment.ReservationFragmentListener,
-        DetailReservasiFragment.ReservationDetailFragmentListener,
-        TambahReservasiDialogFragment.TambahReservasiDialogFragmentListener,
-        TambahPelangganDialogFragment.TambahPelangganDialogFragmentListener {
-
-    public static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
     private int actionBarActiveIndex = 0;
-
-    private PelangganFragment pelangganFragment = new PelangganFragment();
-    private PesananFragment pesananFragment = new PesananFragment();
-    private ReservasiFragment reservasiFragment = new ReservasiFragment();
-
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private FloatingActionButton fab;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -62,7 +44,8 @@ public class KasirActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kasir);
+        setContentView(R.layout.activity_admin);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -70,7 +53,6 @@ public class KasirActivity extends AppCompatActivity implements
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -87,28 +69,20 @@ public class KasirActivity extends AppCompatActivity implements
             }
         });
 
-        createTab(0, getResources().getDrawable(R.drawable.icon_pelanggan));
-        createTab(1, getResources().getDrawable(R.drawable.icon_pesanan));
-        createTab(2, getResources().getDrawable(R.drawable.icon_reservasi));
+        createTab(0, getResources().getDrawable(R.drawable.icon_statistik));
+        createTab(1, getResources().getDrawable(R.drawable.icon_promosi));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (actionBarActiveIndex) {
                     case 0:
-                        TambahPelangganDialogFragment tambahPelangganDialogFragment = new TambahPelangganDialogFragment();
-                        tambahPelangganDialogFragment.show(getSupportFragmentManager(), null);
+                        // Statistik do nothing
                         break;
                     case 1:
-                        TambahPesananDialogFragment tambahPesananDialogFragment = new TambahPesananDialogFragment();
-                        tambahPesananDialogFragment.show(getSupportFragmentManager(), null);
-                        break;
-                    case 2:
-                        TambahReservasiDialogFragment tambahReservasiDialog = TambahReservasiDialogFragment.newInstance(
-                                DetailReservasiFragment.convertDateToString(new Date())
-                        );
-                        tambahReservasiDialog.show(getSupportFragmentManager(), null);
+                        //TODO: TAMBAH EVENT
                         break;
                 }
             }
@@ -145,7 +119,7 @@ public class KasirActivity extends AppCompatActivity implements
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Intent intent = new Intent(KasirActivity.this, AutentikasiActivity.class);
+            Intent intent = new Intent(AdminActivity.this, AutentikasiActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             startActivity(intent);
@@ -159,6 +133,13 @@ public class KasirActivity extends AppCompatActivity implements
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
         actionBarActiveIndex = tab.getPosition();
         mViewPager.setCurrentItem(tab.getPosition());
+        if (fab != null) {
+            if (actionBarActiveIndex == 0) {
+                fab.setVisibility(View.INVISIBLE);
+            } else if (actionBarActiveIndex == 1) {
+                fab.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -172,68 +153,28 @@ public class KasirActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onSelectDate(Date date) {
-        Intent intent = new Intent(this, DetailReservasiActivity.class);
-        intent.putExtra(getResources().getString(R.string.detail_reservasi),
-                DetailReservasiFragment.convertDateToString(date));
-        startActivity(intent);
-    }
-
-    @Override
-    public void onDetailReservasiBack() {
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
     }
 
     @Override
-    public void onReservasi(int i, int j) {
+    public void onStartTrackingTouch(SeekBar seekBar) {
 
     }
 
     @Override
-    public void onTambahPelanggan(String nama, String noHP, String email) {
-        // TODO: Masukin ke db
-        /*
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
-        kalo udah isi db dismiss
-        habis itu panggil
-        pelangganFragment.updateDataPelanggan(); -> belum dicoba sih...
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
-         */
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+    @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
-        public PlaceholderFragment() {
-        }
+    }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
+    @Override
+    public void onNothingSelected() {
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_kasir, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
     }
 
     /**
@@ -252,11 +193,9 @@ public class KasirActivity extends AppCompatActivity implements
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    return pelangganFragment;
+                    return new StatistikFragment();
                 case 1:
-                    return pesananFragment;
-                case 2:
-                    return reservasiFragment;
+                    return new PromosiFragment();
                 default:
                     return null;
             }
@@ -265,18 +204,16 @@ public class KasirActivity extends AppCompatActivity implements
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "PELANGGAN";
+                    return "STATISTIK";
                 case 1:
-                    return "PESANAN";
-                case 2:
-                    return "RESERVASI";
+                    return "PROMOSI";
             }
             return null;
         }

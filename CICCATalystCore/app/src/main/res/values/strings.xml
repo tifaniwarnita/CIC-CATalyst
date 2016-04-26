@@ -42,6 +42,8 @@
     <string name="minuman">Minuman</string>
     <string name="tambah_es_krim">Tambah Es Krim</string>
     <string name="tambah_minuman">Tambah Minuman</string>
+    <string name="data_pengunjung_pesanan"><![CDATA[Data Pengunjung & Pesanan]]></string>
+    <string name="event">Promosi</string>
 
     <string-array name="jam_mulai_selesai_reservasi">
         <item>11.00</item>
