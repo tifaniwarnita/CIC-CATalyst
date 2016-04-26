@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.tifaniwarnita.ciccatalystcore.AutentikasiActivity;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.tifaniwarnita.ciccatalystcore.R;
@@ -159,7 +160,10 @@ public class KasirActivity extends AppCompatActivity implements
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "LOGOUT", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(KasirActivity.this, AutentikasiActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            startActivity(intent);
             return true;
         }
 

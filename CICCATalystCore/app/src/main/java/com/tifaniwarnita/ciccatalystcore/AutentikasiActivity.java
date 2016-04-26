@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.tifaniwarnita.ciccatalystcore.admin.AdminActivity;
+import com.tifaniwarnita.ciccatalystcore.kasir.KasirActivity;
+
 public class AutentikasiActivity extends AppCompatActivity
         implements AutentikasiAdminFragment.AutentikasiAdminFragmentListener {
 
@@ -24,5 +27,13 @@ public class AutentikasiActivity extends AppCompatActivity
         fm.beginTransaction()
                 .replace(R.id.fragment_container, new PilihanAksesFragment())
                 .commit();
+    }
+
+    @Override
+    public void berhasilLogin() {
+        Intent intent = new Intent(AutentikasiActivity.this, AdminActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        startActivity(intent);
     }
 }
