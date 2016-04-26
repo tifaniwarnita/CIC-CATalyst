@@ -101,4 +101,18 @@
         <item>Chocolate</item>
         <item>Mineral Water</item>
     </string-array>
+
+    <string-array name="spinner_statistik_bulan_tahun">
+        <item>Jan 2016</item>
+        <item>Feb 2016</item>
+        <item>Mar 2016</item>
+        <item>Apr 2016</item>
+    </string-array>
+
+    <string-array name="spinner_statistik_jenis">
+        <item>Flakes</item>
+        <item>Rasa</item>
+        <item>Topping</item>
+        <item>Minuman</item>
+    </string-array>
 </resources>
