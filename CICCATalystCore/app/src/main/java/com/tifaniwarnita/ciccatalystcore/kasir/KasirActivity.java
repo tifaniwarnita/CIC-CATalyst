@@ -1,6 +1,7 @@
 package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.tifaniwarnita.ciccatalystcore.MainActivity;
 import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.Pelanggan;
@@ -186,14 +190,25 @@ public class KasirActivity extends AppCompatActivity implements
 
     @Override
     public void onTambahPelanggan(String nama, String noHP, String email) {
-        // TODO: Masukin ke db
-        /*
-        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
-        kalo udah isi db dismiss
-        habis itu panggil
-        pelangganFragment.updateDataPelanggan(); -> belum dicoba sih...
+        Pelanggan pelanggan = new Pelanggan();
+        pelanggan.setNama(nama);
+        pelanggan.setTelepon(noHP);
+        pelanggan.setEmail(email);
+        final ProgressDialog progressDialog = ProgressDialog.show(this, "", "Menunggu...");
+        Backendless.Persistence.of(Pelanggan.class).save(pelanggan, new AsyncCallback<Pelanggan>() {
+            @Override
+            public void handleResponse(Pelanggan response) {
+                pelangganFragment.updateDataPelanggan();
+                progressDialog.dismiss();
+            }
 
-         */
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.d(this.getClass().getSimpleName(), fault.toString());
+            }
+        });
+
+
     }
 
     /**
