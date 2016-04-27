@@ -66,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_margin="5dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -80,33 +81,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/waktu_mulai"/>
+                        android:text="@string/durasi"/>
 
                     <Spinner
                         android:id="@+id/spinner_waktu_mulai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    </Spinner>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/waktu_selesai"/>
-
-                    <Spinner
-                        android:id="@+id/spinner_waktu_selesai"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                     </Spinner>
 
                 </LinearLayout>

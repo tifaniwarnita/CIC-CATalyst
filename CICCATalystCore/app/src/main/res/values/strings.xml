@@ -34,6 +34,7 @@
     <string name="reservasi_tempat">Reservasi Tempat</string>
     <string name="tanggal">Tanggal</string>
     <string name="waktu_mulai">Waktu Mulai</string>
+    <string name="durasi">Durasi</string>
     <string name="waktu_selesai">Waktu Selesai</string>
     <string name="tambah_data_pesanan">Tambah Data Pesanan</string>
     <string name="eskrim">Es Krim</string>
