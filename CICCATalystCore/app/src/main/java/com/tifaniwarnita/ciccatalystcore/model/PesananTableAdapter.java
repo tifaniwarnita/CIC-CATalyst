@@ -26,7 +26,7 @@ public class PesananTableAdapter extends TableDataAdapter<Pesanan> {
         Pesanan pesanan = getRowData(rowIndex);
         View renderedView = null;
 
-        switch (columnIndex) {
+        /*switch (columnIndex) {
             case 0:
                 renderedView = LayoutInflater.from(getContext())
                         .inflate(R.layout.template_pesanan_list_pemesan, null);
@@ -46,7 +46,7 @@ public class PesananTableAdapter extends TableDataAdapter<Pesanan> {
                 // renderedView.setTag(R.string.id_pelanggan, pesanan.getObjectId());
                 ((TextView) renderedView.findViewById(R.id.waktu)).setText(pesanan.getWaktuSelesai());
                 break;
-        }
+        }*/
 
         return renderedView;
     }

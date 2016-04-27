@@ -172,6 +172,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
     private void addPesanan(String nama, int durasi) {
         Pesanan pesanan = new Pesanan(nama, durasi);
 
+        final DialogFragment self = this;
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
         Backendless.Persistence.of(Pesanan.class).save(pesanan, new AsyncCallback<Pesanan>() {
             @Override
@@ -180,12 +181,15 @@ public class TambahPesananDialogFragment extends DialogFragment {
                 publish("CIC CATalyst Core", "Pesanan baru");
                 Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 dialogFragmentListener.onTambahPesanan();
-                dismiss();
+                Log.d("HALO", "SAMPAI");
+                self.dismiss();
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
                 progressDialog.dismiss();
+                Log.d("HALO", fault.toString());
+                self.dismiss();
             }
         });
 
