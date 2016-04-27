@@ -97,7 +97,7 @@ public class DetailReservasiFragment extends Fragment {
             TextView t = (TextView) v.findViewById(idJam[i]);
             TextView t2 = (TextView) v.findViewById(idPemesan[i]);
             textViewJam.add(t);
-            textViewPemesan.add(t);
+            textViewPemesan.add(t2);
         }
 
         if (date != null) {
