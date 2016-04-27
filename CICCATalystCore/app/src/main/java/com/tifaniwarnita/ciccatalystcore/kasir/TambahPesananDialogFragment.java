@@ -1,8 +1,10 @@
 package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import com.tifaniwarnita.ciccatalystcore.R;
 import com.tifaniwarnita.ciccatalystcore.model.EsKrim;
 import com.tifaniwarnita.ciccatalystcore.model.EsKrimLayout;
 import com.tifaniwarnita.ciccatalystcore.model.MinumanLayout;
+import com.tifaniwarnita.ciccatalystcore.model.Pesanan;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -46,8 +49,34 @@ public class TambahPesananDialogFragment extends DialogFragment {
     private ArrayList<EsKrimLayout> pesananEsKrim = new ArrayList<>();
     private ArrayList<MinumanLayout> pesananMinuman = new ArrayList<>();
 
+    private TambahPesananDialogFragmentListener dialogFragmentListener;
+
+    public interface TambahPesananDialogFragmentListener {
+        void onTambahPesanan();
+    }
+
     public TambahPesananDialogFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // Verify that the host activity implements the callback interface
+        try {
+            // Instantiate the NoticeDialogListener so we can send events to the host
+            dialogFragmentListener = (TambahPesananDialogFragmentListener) activity;
+        } catch (ClassCastException e) {
+            // The activity doesn't implement the interface, throw exception
+            throw new ClassCastException(activity.toString()
+                    + " must implement NoticeDialogListener");
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dialogFragmentListener = null;
     }
 
     @Override
@@ -58,6 +87,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
         View promptView = inflater.inflate(R.layout.dialog_fragment_tambah_pesanan, null);
 
         final EditText editTextNama = (EditText) promptView.findViewById(R.id.edit_text_nama);
+        final Spinner spinnerDurasi = (Spinner)promptView.findViewById(R.id.spinner_durasi);
         esKrimContainer = (LinearLayout) promptView.findViewById(R.id.es_krim_container);
         minumanContainer = (LinearLayout) promptView.findViewById(R.id.minuman_container);
 
@@ -73,9 +103,10 @@ public class TambahPesananDialogFragment extends DialogFragment {
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                publish("CIC CATalyst Core", "Pesanan baru");
-                Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                dismiss();
+                String nama = editTextNama.getText().toString();
+                String rawDurasi = spinnerDurasi.getSelectedItem().toString();
+                int durasi = Integer.valueOf(rawDurasi);
+                addPesanan(nama, durasi);
             }
         });
 
@@ -96,7 +127,11 @@ public class TambahPesananDialogFragment extends DialogFragment {
             }
         });
 
+
+        /*
         String[] waktu = getResources().getStringArray(R.array.jam_mulai_selesai_reservasi);
+
+
         spinnerWaktuMulai = (Spinner) promptView.findViewById(R.id.spinner_waktu_mulai);
         ArrayAdapter<CharSequence> adapterWaktuMulai = new ArrayAdapter<CharSequence>(
                 getActivity(),
@@ -116,7 +151,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
         }
         adapterWaktuSelesai.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerWaktuSelesai.setAdapter(adapterWaktuSelesai);
-
+        */
         tambahEsKrim();
         tambahMinuman();
 
@@ -132,6 +167,28 @@ public class TambahPesananDialogFragment extends DialogFragment {
 //        dialog.setCanceledOnTouchOutside(false);
 
         return dialog;
+    }
+
+    private void addPesanan(String nama, int durasi) {
+        Pesanan pesanan = new Pesanan(nama, durasi);
+
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+        Backendless.Persistence.of(Pesanan.class).save(pesanan, new AsyncCallback<Pesanan>() {
+            @Override
+            public void handleResponse(Pesanan response) {
+                progressDialog.dismiss();
+                publish("CIC CATalyst Core", "Pesanan baru");
+                Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                dialogFragmentListener.onTambahPesanan();
+                dismiss();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                progressDialog.dismiss();
+            }
+        });
+
     }
 
     private void publish(String title, String message) {

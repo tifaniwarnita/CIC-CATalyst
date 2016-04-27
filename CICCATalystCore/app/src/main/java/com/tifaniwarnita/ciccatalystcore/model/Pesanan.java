@@ -1,43 +1,46 @@
 package com.tifaniwarnita.ciccatalystcore.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Tifani on 4/24/2016.
  */
 public class Pesanan {
     String pemesan;
-    String waktuMulai;
-    String waktuSelesai;
-    ArrayList<EsKrim> daftarEsKrim = new ArrayList<>();
-    ArrayList<Minuman> daftarMinuman = new ArrayList<>();
+    int durasi;
+    public Date created;
 
-    public Pesanan(String pemesan, String waktuMulai, String waktuSelesai, ArrayList<EsKrim> daftarEsKrim, ArrayList<Minuman> daftarMinuman) {
+    public Pesanan() {
+
+    }
+
+    public Pesanan(String pemesan, int durasi) {
         this.pemesan = pemesan;
-        this.waktuMulai = waktuMulai;
-        this.waktuSelesai = waktuSelesai;
-        // TODO:
-        //this.daftarEsKrim = daftarEsKrim;
-        //this.daftarMinuman = daftarMinuman;
+        this.durasi = durasi;
     }
 
     public String getPemesan() {
         return pemesan;
     }
 
-    public String getWaktuMulai() {
-        return waktuMulai;
+    public void setPemesan(String pemesan) {
+        this.pemesan = pemesan;
     }
 
-    public String getWaktuSelesai() {
-        return waktuSelesai;
+    public int getDurasi() {
+        return durasi;
     }
 
-    public ArrayList<EsKrim> getDaftarEsKrim() {
-        return daftarEsKrim;
+    public void setDurasi(int durasi) {
+        this.durasi = durasi;
     }
 
-    public ArrayList<Minuman> getDaftarMinuman() {
-        return daftarMinuman;
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getCreated() {
+        return created;
     }
 }

@@ -37,7 +37,8 @@ public class KasirActivity extends AppCompatActivity implements
         ActionBar.TabListener, ReservasiFragment.ReservationFragmentListener,
         DetailReservasiFragment.ReservationDetailFragmentListener,
         TambahReservasiDialogFragment.TambahReservasiDialogFragmentListener,
-        TambahPelangganDialogFragment.TambahPelangganDialogFragmentListener {
+        TambahPelangganDialogFragment.TambahPelangganDialogFragmentListener,
+        TambahPesananDialogFragment.TambahPesananDialogFragmentListener {
 
     public static ArrayList<Pelanggan> dataPelanggan = new ArrayList<>();
     private int actionBarActiveIndex = 0;
@@ -202,6 +203,11 @@ public class KasirActivity extends AppCompatActivity implements
     @Override
     public void onReservasi(String pemesan, int i, int j) {
 
+    }
+
+    @Override
+    public void onTambahPesanan() {
+        pesananFragment.updateTabelPesanan();
     }
 
     @Override
