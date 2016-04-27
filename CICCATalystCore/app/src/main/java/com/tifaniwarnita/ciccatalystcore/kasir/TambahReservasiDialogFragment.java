@@ -38,13 +38,14 @@ public class TambahReservasiDialogFragment extends DialogFragment {
     private Date date;
     private Calendar calendar;
     private TextView textViewTanggal;
+    private EditText editTextPemesan;
     private Spinner spinnerWaktuMulai;
     private Spinner spinnerWaktuSelesai;
 
     private TambahReservasiDialogFragmentListener dialogFragmentListener;
 
     public interface TambahReservasiDialogFragmentListener {
-        void onReservasi(int i, int j);
+        void onReservasi(String pemesan, int i, int j);
     }
 
     public TambahReservasiDialogFragment() {
@@ -81,6 +82,7 @@ public class TambahReservasiDialogFragment extends DialogFragment {
         View promptView = inflater.inflate(R.layout.dialog_fragment_tambah_reservasi, null);
 
         textViewTanggal = (TextView) promptView.findViewById(R.id.text_view_tanggal);
+        editTextPemesan = (EditText) promptView.findViewById(R.id.edit_text_nama);
         showDate();
         textViewTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +129,8 @@ public class TambahReservasiDialogFragment extends DialogFragment {
         buttonReservasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogFragmentListener.onReservasi(spinnerWaktuMulai.getSelectedItemPosition(),
+                Log.d(TambahReservasiDialogFragment.class.getSimpleName(), "STRING PEMESAN: " + editTextPemesan.getText().toString());
+                dialogFragmentListener.onReservasi(editTextPemesan.getText().toString(), spinnerWaktuMulai.getSelectedItemPosition(),
                         spinnerWaktuSelesai.getSelectedItemPosition());
                 Toast.makeText(getContext(), "Reservasi berhasil", Toast.LENGTH_SHORT).show();
                 dismiss();

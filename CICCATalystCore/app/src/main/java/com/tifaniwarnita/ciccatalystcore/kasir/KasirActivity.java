@@ -200,7 +200,7 @@ public class KasirActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onReservasi(int i, int j) {
+    public void onReservasi(String pemesan, int i, int j) {
 
     }
 

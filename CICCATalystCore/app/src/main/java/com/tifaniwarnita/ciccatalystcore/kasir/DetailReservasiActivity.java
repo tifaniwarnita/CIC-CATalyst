@@ -64,9 +64,9 @@ public class DetailReservasiActivity extends AppCompatActivity
     }
 
     @Override
-    public void onReservasi(int i, int j) {
+    public void onReservasi(String pemesan, int i, int j) {
         if (detailReservasiFragment != null) {
-            detailReservasiFragment.updateDummy(i, j);
+            detailReservasiFragment.updateDummy(pemesan, i, j);
         }
     }
 }

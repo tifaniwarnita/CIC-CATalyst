@@ -1,6 +1,7 @@
 package com.tifaniwarnita.ciccatalystcore.admin;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,22 +20,30 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.tifaniwarnita.ciccatalystcore.AutentikasiActivity;
 import com.tifaniwarnita.ciccatalystcore.PilihanAksesFragment;
 import com.tifaniwarnita.ciccatalystcore.R;
+import com.tifaniwarnita.ciccatalystcore.kasir.ReservasiFragment;
+import com.tifaniwarnita.ciccatalystcore.kasir.TambahReservasiDialogFragment;
+import com.tifaniwarnita.ciccatalystcore.model.Event;
 
 public class AdminActivity extends AppCompatActivity  implements
         ActionBar.TabListener, SeekBar.OnSeekBarChangeListener,
-        OnChartValueSelectedListener {
+        OnChartValueSelectedListener,
+        TambahEventDialogFragment.TambahEventDialogFragmentListener {
 
     private int actionBarActiveIndex = 0;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private FloatingActionButton fab;
+    private PromosiFragment promosiFragment = new PromosiFragment();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -140,6 +149,7 @@ public class AdminActivity extends AppCompatActivity  implements
                 fab.setVisibility(View.INVISIBLE);
             } else if (actionBarActiveIndex == 1) {
                 fab.setVisibility(View.VISIBLE);
+                promosiFragment.updateDataPromosi();
             }
         }
     }
@@ -179,6 +189,28 @@ public class AdminActivity extends AppCompatActivity  implements
 
     }
 
+    @Override
+    public void onTambahEvent(String judul, String jangka, String deskripsi) {
+        final ProgressDialog progressDialog = ProgressDialog.show(this, "", "Menunggu...");
+        Event event = new Event();
+        event.setJudul(judul);
+        event.setTanggal(jangka);
+        event.setDeskripsi(deskripsi);
+        Backendless.Persistence.of(Event.class).save(event, new AsyncCallback<Event>() {
+            @Override
+            public void handleResponse(Event response) {
+                Toast.makeText(getApplicationContext(), "Data promosi berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                promosiFragment.updateDataPromosi();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                progressDialog.dismiss();
+            }
+        });
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -197,7 +229,7 @@ public class AdminActivity extends AppCompatActivity  implements
                 case 0:
                     return new StatistikFragment();
                 case 1:
-                    return new PromosiFragment();
+                    return promosiFragment;
                 default:
                     return null;
             }

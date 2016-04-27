@@ -73,7 +73,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                publish("Title", "Message");
+                publish("CIC CATalyst Core", "Pesanan baru");
                 Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 dismiss();
             }

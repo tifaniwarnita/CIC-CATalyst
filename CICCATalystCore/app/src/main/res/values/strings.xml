@@ -49,6 +49,7 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="judul_event">Judul Promosi</string>
     <string name="tambah_data_promosi">Tambah Data Promosi</string>
+    <string name="pemesan">Pemesan</string>
 
     <string-array name="jam_mulai_selesai_reservasi">
         <item>11.00</item>
