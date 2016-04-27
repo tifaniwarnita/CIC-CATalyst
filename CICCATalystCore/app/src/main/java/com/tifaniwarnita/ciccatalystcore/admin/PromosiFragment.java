@@ -4,6 +4,7 @@ package com.tifaniwarnita.ciccatalystcore.admin;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,8 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class PromosiFragment extends Fragment {
-
+    private LayoutInflater inflaterPromosi;
+    private LinearLayout dataEventContainer;
 
     public PromosiFragment() {
         // Required empty public constructor
@@ -37,8 +39,13 @@ public class PromosiFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_promosi, container, false);
+        inflaterPromosi = inflater;
+        dataEventContainer = (LinearLayout) v.findViewById(R.id.daftar_promosi_container);
+        // updateDataPromosi();
+        return v;
+    }
 
-        final LinearLayout dataEventContainer = (LinearLayout) v.findViewById(R.id.daftar_promosi_container);
+    public void updateDataPromosi() {
         //TODO: Ambil dari database daftar event yang ada
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Loading...");
         Backendless.Persistence.of( Event.class ).find(new AsyncCallback<BackendlessCollection<Event>>(){
@@ -48,8 +55,11 @@ public class PromosiFragment extends Fragment {
                 progressDialog.dismiss();
                 List<Event> events = results.getData();
                 Log.d(PromosiFragment.class.getSimpleName(), "Size: " + events.size());
+                if (dataEventContainer.getChildCount() > 0) {
+                    dataEventContainer.removeAllViews();
+                }
                 for (Event event: events) {
-                    View eventView = inflater.inflate(R.layout.template_promosi, dataEventContainer, false);
+                    View eventView = inflaterPromosi.inflate(R.layout.template_promosi, dataEventContainer, false);
                     ((TextView) eventView.findViewById(R.id.event_title)).setText(event.getJudul());
                     ((TextView) eventView.findViewById(R.id.event_date)).setText(event.getTanggal());
                     ((TextView) eventView.findViewById(R.id.event_detail)).setText(event.getDeskripsi());
@@ -65,7 +75,8 @@ public class PromosiFragment extends Fragment {
                 Log.d("1", fault.toString());
             }
         });
-        return v;
     }
+
+
 
 }

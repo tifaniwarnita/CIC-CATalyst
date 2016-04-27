@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.tifaniwarnita.ciccatalystcore.R;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class DetailReservasiFragment extends Fragment {
 
     private Date date;
     private ArrayList<TextView> textViewJam = new ArrayList<>();
+    private ArrayList<TextView> textViewPemesan = new ArrayList<>();
 
     private ReservationDetailFragmentListener fragmentListener;
 
@@ -77,9 +79,25 @@ public class DetailReservasiFragment extends Fragment {
                 R.id.jam_11,
         };
 
+        int[] idPemesan = {
+                R.id.pemesan_1,
+                R.id.pemesan_2,
+                R.id.pemesan_3,
+                R.id.pemesan_4,
+                R.id.pemesan_5,
+                R.id.pemesan_6,
+                R.id.pemesan_7,
+                R.id.pemesan_8,
+                R.id.pemesan_9,
+                R.id.pemesan_10,
+                R.id.pemesan_11,
+        };
+
         for (int i=0; i<idJam.length; i++) {
             TextView t = (TextView) v.findViewById(idJam[i]);
+            TextView t2 = (TextView) v.findViewById(idPemesan[i]);
             textViewJam.add(t);
+            textViewPemesan.add(t);
         }
 
         if (date != null) {
@@ -128,8 +146,10 @@ public class DetailReservasiFragment extends Fragment {
         return dateString;
     }
 
-    public void updateDummy(int mulai, int selesai) {
+    public void updateDummy(String pemesan, int mulai, int selesai) {
         for(int i = mulai; i<(mulai + selesai)+1; i++) {
+            textViewPemesan.get(i).setText(pemesan);
+            textViewPemesan.get(i).setVisibility(View.VISIBLE);
             textViewJam.get(i).setText("Sudah dipesan");
         }
     }

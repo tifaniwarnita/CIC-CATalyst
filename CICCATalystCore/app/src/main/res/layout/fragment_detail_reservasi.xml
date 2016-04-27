@@ -65,6 +65,17 @@
                 android:padding="3dip"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/pemesan"
+                android:textSize="15sp"
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
+
         </TableRow>
 
         <TableRow>
@@ -81,6 +92,15 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_1"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+
         </TableRow>
 
         <TableRow>
@@ -97,6 +117,15 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_2"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
+
         </TableRow>
 
         <TableRow>
@@ -113,6 +142,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_3"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -129,6 +166,14 @@
                 android:text="Sudah dipesan"
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+
+            <TextView
+                android:id="@+id/pemesan_4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -145,6 +190,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_5"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -161,6 +214,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_6"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -177,6 +238,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_7"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -193,6 +262,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_8"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -209,6 +286,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_9"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -225,6 +310,13 @@
                 android:text="Sudah dipesan"
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_11"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
 
         <TableRow>
@@ -241,6 +333,14 @@
                 android:text=""
                 android:padding="3dip"
                 android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/pemesan_10"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Tifani"
+                android:gravity="center_horizontal"
+                android:padding="3dip"/>
         </TableRow>
     </TableLayout>
 

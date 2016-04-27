@@ -31,7 +31,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="25dp"
         android:text="*) Ketersediaan tempat dapat dicek pada masing-masing tanggal"
         android:textSize="12dp"
         android:textColor="@android:color/darker_gray"/>
