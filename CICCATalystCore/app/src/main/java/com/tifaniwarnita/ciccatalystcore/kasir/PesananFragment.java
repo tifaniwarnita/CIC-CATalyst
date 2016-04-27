@@ -90,9 +90,10 @@ public class PesananFragment extends Fragment {
                     }
                     counterString = "#" + counterString;
 
-                    String dateString = startDate.get(Calendar.HOUR_OF_DAY) + ":" + startDate.get(Calendar.MINUTE)
+
+                    String dateString = new SimpleDateFormat("HH:mm").format(startDate.getTime())
                                         + " - " +
-                                        endDate.get(Calendar.HOUR_OF_DAY) + ":" + endDate.get(Calendar.MINUTE);
+                                        new SimpleDateFormat("HH:mm").format(endDate.getTime());
                     pesananContainer.addView(createPesanan(counterString, pesanan.getPemesan(), dateString));
                     ++counter;
                 }
