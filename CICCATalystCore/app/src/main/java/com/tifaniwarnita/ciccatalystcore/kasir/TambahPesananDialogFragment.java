@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -174,15 +175,16 @@ public class TambahPesananDialogFragment extends DialogFragment {
 
         final DialogFragment self = this;
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+        final Context context = getContext();
+        final TambahPesananDialogFragmentListener listener = dialogFragmentListener;
         Backendless.Persistence.of(Pesanan.class).save(pesanan, new AsyncCallback<Pesanan>() {
             @Override
             public void handleResponse(Pesanan response) {
                 progressDialog.dismiss();
                 publish("CIC CATalyst Core", "Pesanan baru");
-                Toast.makeText(getContext(), "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                dialogFragmentListener.onTambahPesanan();
+                Toast.makeText(context, "Data pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                listener.onTambahPesanan();
                 Log.d("HALO", "SAMPAI");
-                self.dismiss();
             }
 
             @Override
@@ -192,7 +194,7 @@ public class TambahPesananDialogFragment extends DialogFragment {
                 self.dismiss();
             }
         });
-
+        self.dismiss();
     }
 
     private void publish(String title, String message) {

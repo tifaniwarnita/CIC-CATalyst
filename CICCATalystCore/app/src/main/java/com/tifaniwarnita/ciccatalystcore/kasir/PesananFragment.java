@@ -1,6 +1,7 @@
 package com.tifaniwarnita.ciccatalystcore.kasir;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
@@ -69,12 +71,15 @@ public class PesananFragment extends Fragment {
             pesananContainer.removeAllViews();
         }
 
+        final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "", "Menunggu...");
+
         Backendless.Persistence.of(Pesanan.class).find(new AsyncCallback<BackendlessCollection<Pesanan>>() {
             @Override
             public void handleResponse(BackendlessCollection<Pesanan> response) {
                 List<Pesanan> pesanans = response.getData();
-                int counter = 0;
-                for (Pesanan pesanan: pesanans) {
+                int counter = 1;
+                for (int index = pesanans.size()-1; index >= 0; --index) {
+                    Pesanan pesanan = pesanans.get(index);
                     Date created = pesanan.getCreated();
                     Calendar startDate = Calendar.getInstance();
                     Calendar endDate = Calendar.getInstance();
@@ -97,11 +102,12 @@ public class PesananFragment extends Fragment {
                     pesananContainer.addView(createPesanan(counterString, pesanan.getPemesan(), dateString));
                     ++counter;
                 }
+                progressDialog.dismiss();
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-
+                progressDialog.dismiss();
             }
         });
         /*
